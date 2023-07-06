@@ -69,7 +69,7 @@ struct ContentView: View {
         
         correctAnswer = firstNumber + secondNumber
         
-        for i in 0...2 {
+        for _ in 0...2 {
             answerList.append(Int.random(in: 0...difficulty))
         }
         
