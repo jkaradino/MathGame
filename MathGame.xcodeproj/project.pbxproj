@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		213959862A576D7000C62055 /* SingleMatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213959852A576D7000C62055 /* SingleMatchView.swift */; };
 		213EE1DF2A560C20005F6430 /* MathGameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213EE1DE2A560C20005F6430 /* MathGameApp.swift */; };
 		213EE1E12A560C20005F6430 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213EE1E02A560C20005F6430 /* ContentView.swift */; };
 		213EE1E32A560C21005F6430 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 213EE1E22A560C21005F6430 /* Assets.xcassets */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		213959852A576D7000C62055 /* SingleMatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleMatchView.swift; sourceTree = "<group>"; };
 		213EE1DB2A560C20005F6430 /* MathGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MathGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		213EE1DE2A560C20005F6430 /* MathGameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathGameApp.swift; sourceTree = "<group>"; };
 		213EE1E02A560C20005F6430 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -58,6 +60,7 @@
 				213EE1E22A560C21005F6430 /* Assets.xcassets */,
 				213EE1E42A560C21005F6430 /* Preview Content */,
 				21A7D91E2A560F5000095E68 /* AnswerButton.swift */,
+				213959852A576D7000C62055 /* SingleMatchView.swift */,
 			);
 			path = MathGame;
 			sourceTree = "<group>";
@@ -142,6 +145,7 @@
 			files = (
 				213EE1E12A560C20005F6430 /* ContentView.swift in Sources */,
 				213EE1DF2A560C20005F6430 /* MathGameApp.swift in Sources */,
+				213959862A576D7000C62055 /* SingleMatchView.swift in Sources */,
 				21A7D91F2A560F5000095E68 /* AnswerButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
