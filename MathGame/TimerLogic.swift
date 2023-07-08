@@ -23,6 +23,7 @@ struct TimerLogic: View {
       if timerIsPaused {
         HStack {
           Button(action:{
+              self.restartTimer()
             print("RESTART")
           }){
             Image(systemName: "backward.end.alt")
@@ -73,6 +74,13 @@ struct TimerLogic: View {
     timer?.invalidate()
     timer = nil
   }
+    
+    func restartTimer() {
+        hours = 0
+        minutes = 0
+        seconds = 0
+        miliseconds = 0
+    }
 }
 
 struct TimerLogic_Previews: PreviewProvider {
