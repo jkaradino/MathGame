@@ -104,10 +104,6 @@ struct RunningTime: View {
               Text("NOT Paused")
             }
           }
-        
-        //static var
-        
-        
     }
 }
 
