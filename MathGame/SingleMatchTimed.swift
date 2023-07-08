@@ -1,19 +1,21 @@
 //
-//  SingleMatchView.swift
+//  SingleMatchTimed.swift
 //  MathGame
 //
-//  Created by Jasmin Karadinovic on 06.07.23.
+//  Created by Jasmin Karadinovic on 07.07.23.
 //
 
 import SwiftUI
 
-struct SingleMatchView: View {
+struct SingleMatchTimed: View {
     @State private var correctAnswer = 0
     @State private var choiceArray: [Int] = [0,1,2,3]
     @State private var firstNumber = 0
     @State private var secondNumber = 0
     @State private var difficulty = 1000
     @State private var score = 0
+    
+
     
     //
     var body: some View {
@@ -80,8 +82,55 @@ struct SingleMatchView: View {
     }
 }
 
-struct SingleMatchView_Previews: PreviewProvider {
+// counter logic
+
+var timerIsPaused: Bool = false
+
+struct RunningTime: View {
+    var body: some View {
+        
+        // add timer variables
+        @State var hours: Int = 0
+        @State var minutes: Int = 0
+        @State var seconds: Int = 0
+        
+        VStack {
+            Text("Time is running")
+                .padding()
+            Text("\(hours):\(minutes):\(seconds)")
+            if timerIsPaused {
+              Text("PAUSED")
+            } else {
+              Text("NOT Paused")
+            }
+          }
+        
+        //static var
+        
+        
+    }
+}
+
+struct test1: View {
+    @State var currentDate = Date.now
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+
+    var body: some View {
+        Text("\(currentDate)")
+            .onReceive(timer) { input in
+                currentDate = input
+            }
+    }
+}
+
+struct SingleMatchTimed_Previews: PreviewProvider {
     static var previews: some View {
-        SingleMatchView()
+        VStack {
+            SingleMatchTimed()
+                .padding()
+            RunningTime()
+            
+            test1()
+        }
     }
 }
