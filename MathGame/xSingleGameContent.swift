@@ -9,7 +9,7 @@
 
 import SwiftUI
 
-struct SingleGameContent: View {
+struct xSingleGameContent: View {
     var body: some View {
         Button {
             // action
@@ -22,8 +22,8 @@ struct SingleGameContent: View {
 }
 
 
-struct SingleGameContent_Previews: PreviewProvider {
+struct xSingleGameContent_Previews: PreviewProvider {
     static var previews: some View {
-        SingleGameContent()
+        xSingleGameContent()
     }
 }
