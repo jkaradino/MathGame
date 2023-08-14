@@ -17,71 +17,13 @@ struct SingleMatchNoLim: View {
     
     //
     var body: some View {
-        VStack {
-            Text("\(firstNumber) + \(secondNumber)")
-                .font(.largeTitle)
-                .bold()
-            
-            HStack {
-                ForEach(0..<2) { index in
-                    Button {
-                        answerIsCorrect(answer: choiceArray[index])
-                        generateAnswers()
-                    } label: {
-                        AnswerButton(number: choiceArray[index])
-                    }
-                }
-            }
-            
-            HStack {
-                ForEach(2..<4) { index in
-                    Button {
-                        answerIsCorrect(answer: choiceArray[index])
-                        generateAnswers()
-                    } label: {
-                        AnswerButton(number: choiceArray[index])
-                    }
-                }
-            }
-            
-            Text("Score \(score)")
-                .font(.headline)
-                .bold()
-            
-        }.onAppear(perform: generateAnswers)
-    }
-    //
-    
-    func answerIsCorrect(answer: Int) {
-        let isCorrect = answer == correctAnswer ? true : false
-        
-        if isCorrect {
-            self.score += 1
-        } else {
-            self.score -= 1
-        }
-    }
-    
-    func generateAnswers() {
-        firstNumber = Int.random(in: 0...(difficulty/2))
-        secondNumber = Int.random(in: 0...(difficulty/2))
-        var answerList = [Int]()
-        
-        correctAnswer = firstNumber + secondNumber
-        
-        for _ in 0...2 {
-            answerList.append(Int.random(in: 0...difficulty))
-        }
-        
-        answerList.append(correctAnswer)
-        
-        choiceArray = answerList.shuffled()
-        
+        MainMathGame(difficulty: 1000)
     }
 }
 
-struct SingleMatchView_Previews: PreviewProvider {
+struct SingleMatchNoLim_Previews: PreviewProvider {
     static var previews: some View {
+        //MainMathGame()
         SingleMatchNoLim()
     }
 }
