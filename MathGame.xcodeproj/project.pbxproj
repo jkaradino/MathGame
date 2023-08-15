@@ -21,6 +21,8 @@
 		21C2EDD22A6C2DC500762882 /* xSingleGameContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C2EDD12A6C2DC500762882 /* xSingleGameContent.swift */; };
 		21C2EDD42A6C2F8300762882 /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C2EDD32A6C2F8300762882 /* MenuButton.swift */; };
 		21CAC4FB2A8A280800FD9322 /* SingleMatchTimed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CAC4FA2A8A280800FD9322 /* SingleMatchTimed.swift */; };
+		21CAC4FD2A8A42A300FD9322 /* Background_Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CAC4FC2A8A42A300FD9322 /* Background_Template.swift */; };
+		21CAC4FF2A8B74EB00FD9322 /* Timer60s.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CAC4FE2A8B74EB00FD9322 /* Timer60s.swift */; };
 		21E28A3B2A71C5EC006FD6C0 /* MainMathGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E28A3A2A71C5EC006FD6C0 /* MainMathGame.swift */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +42,8 @@
 		21C2EDD12A6C2DC500762882 /* xSingleGameContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xSingleGameContent.swift; sourceTree = "<group>"; };
 		21C2EDD32A6C2F8300762882 /* MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
 		21CAC4FA2A8A280800FD9322 /* SingleMatchTimed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleMatchTimed.swift; sourceTree = "<group>"; };
+		21CAC4FC2A8A42A300FD9322 /* Background_Template.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background_Template.swift; sourceTree = "<group>"; };
+		21CAC4FE2A8B74EB00FD9322 /* Timer60s.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer60s.swift; sourceTree = "<group>"; };
 		21E28A3A2A71C5EC006FD6C0 /* MainMathGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMathGame.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -90,6 +94,8 @@
 				219D882E2A58ED9000B38022 /* xTimerLogic_old.swift */,
 				21C2EDCE2A6C025E00762882 /* xBasics_Unused */,
 				21E28A3A2A71C5EC006FD6C0 /* MainMathGame.swift */,
+				21CAC4FC2A8A42A300FD9322 /* Background_Template.swift */,
+				21CAC4FE2A8B74EB00FD9322 /* Timer60s.swift */,
 			);
 			path = MathGame;
 			sourceTree = "<group>";
@@ -195,8 +201,10 @@
 				217087DE2A59F1710049AC3D /* TimerLogic_Base.swift in Sources */,
 				213959882A57728100C62055 /* xSingleMatchTimed.swift in Sources */,
 				21C2EDD42A6C2F8300762882 /* MenuButton.swift in Sources */,
+				21CAC4FF2A8B74EB00FD9322 /* Timer60s.swift in Sources */,
 				219D882F2A58ED9000B38022 /* xTimerLogic_old.swift in Sources */,
 				217087DC2A59ED000049AC3D /* TimerLogic.swift in Sources */,
+				21CAC4FD2A8A42A300FD9322 /* Background_Template.swift in Sources */,
 				21C2EDCA2A6C005E00762882 /* StartContent.swift in Sources */,
 				21A7D91F2A560F5000095E68 /* AnswerButton.swift in Sources */,
 			);

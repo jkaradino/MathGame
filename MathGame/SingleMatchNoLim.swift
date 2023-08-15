@@ -17,7 +17,9 @@ struct SingleMatchNoLim: View {
     
     //
     var body: some View {
-        MainMathGame(difficulty: 1000)
+        Color.purple.blur(radius: 3)
+            .overlay(
+        MainMathGame(difficulty: 1000))
     }
 }
 

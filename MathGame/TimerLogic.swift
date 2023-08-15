@@ -19,12 +19,18 @@ struct TimerLogic: View {
         VStack {
             Text("\(minutes):\(seconds):\(mseconds)")
                 .font(Font.title)
+            
+//            if seconds > 5 {
+//                self.restartTimer()
+//            } else {
+//                self.stopTimer()
+//            }
                 
             if timerIsPaused {
                 HStack {
                     Button(action: {
                         self.restartTimer()
-                        print("RESTART")
+                        print("RESTART / New Game")
                     }) {
                         Image(systemName: "backward")
                             .padding(.all)
@@ -61,7 +67,9 @@ struct TimerLogic: View {
     }
     
     func startTimer() {
+        
         timerIsPaused = false
+        
         timer = Timer.scheduledTimer(withTimeInterval: 0.001, repeats: true) { tempTimer in
             // Logic for timer counting up
             if self.mseconds == 999 {
