@@ -10,13 +10,14 @@ import SwiftUI
 // Create a template for an answer button called in ContentView
 struct AnswerButton: View {
     var number: Int
+    let backgroundColor = MainProperties.BGColors.init()
     
     var body: some View {
         Text("\(number)")
             .frame(width: 110, height: 110)
             .font(.system(size: 40, weight: .bold))
-            .foregroundColor(Color.white)
-            .background(Color.mint.gradient)
+            .foregroundColor(backgroundColor.primaryColor)
+            .background(backgroundColor.secondaryColor.gradient)
             .clipShape(Circle())
             .padding()
     }

@@ -16,7 +16,6 @@ struct Background_Template: View {
         
         ColorCollection()
         
-        
         VStack {
             Color.purple.brightness(0.5)
                             .padding(0)
@@ -34,13 +33,18 @@ struct Background_Template: View {
 
 struct ColorCollection: View {
     var body: some View {
+        let primaryColor = Color(red: 0.4627, green: 0.8392, blue: 1.0)
+        let secondaryColor = Color(red: 0.8, green: 0.0, blue: 0.7)
+        let thirdColor = Color.teal
+        
         HStack {
             VStack {
                 Color.purple.brightness(0.3)
                 Color.purple
                     }
             VStack {
-                Color.mint.brightness(0.07)
+                Color.mint
+                    .brightness(0.07)
                 Color.teal
                     .contrast(1)
                     .brightness(0)
@@ -49,10 +53,12 @@ struct ColorCollection: View {
                 Color.cyan
                 Color.indigo
             }
-            
+            VStack {
+                primaryColor
+                secondaryColor
+                thirdColor
+            }
         }
-        
-        
     }
 }
 

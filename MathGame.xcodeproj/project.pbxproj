@@ -23,6 +23,9 @@
 		21CAC4FB2A8A280800FD9322 /* SingleMatchTimed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CAC4FA2A8A280800FD9322 /* SingleMatchTimed.swift */; };
 		21CAC4FD2A8A42A300FD9322 /* Background_Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CAC4FC2A8A42A300FD9322 /* Background_Template.swift */; };
 		21CAC4FF2A8B74EB00FD9322 /* Timer60s.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CAC4FE2A8B74EB00FD9322 /* Timer60s.swift */; };
+		21CAC5012A8C148C00FD9322 /* TestForAlen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CAC5002A8C148C00FD9322 /* TestForAlen.swift */; };
+		21CAC5052A8CCDE400FD9322 /* MainProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CAC5042A8CCDE400FD9322 /* MainProperties.swift */; };
+		21CBC7E82A8D260800A0953D /* MainLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CBC7E72A8D260800A0953D /* MainLayout.swift */; };
 		21E28A3B2A71C5EC006FD6C0 /* MainMathGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E28A3A2A71C5EC006FD6C0 /* MainMathGame.swift */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +47,9 @@
 		21CAC4FA2A8A280800FD9322 /* SingleMatchTimed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleMatchTimed.swift; sourceTree = "<group>"; };
 		21CAC4FC2A8A42A300FD9322 /* Background_Template.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background_Template.swift; sourceTree = "<group>"; };
 		21CAC4FE2A8B74EB00FD9322 /* Timer60s.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer60s.swift; sourceTree = "<group>"; };
+		21CAC5002A8C148C00FD9322 /* TestForAlen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestForAlen.swift; sourceTree = "<group>"; };
+		21CAC5042A8CCDE400FD9322 /* MainProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainProperties.swift; sourceTree = "<group>"; };
+		21CBC7E72A8D260800A0953D /* MainLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainLayout.swift; sourceTree = "<group>"; };
 		21E28A3A2A71C5EC006FD6C0 /* MainMathGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMathGame.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -82,8 +88,11 @@
 				213EE1E22A560C21005F6430 /* Assets.xcassets */,
 				21C2EDCB2A6C00ED00762882 /* Templates */,
 				213EE1E42A560C21005F6430 /* Preview Content */,
+				21CAC5042A8CCDE400FD9322 /* MainProperties.swift */,
 				21C2EDD32A6C2F8300762882 /* MenuButton.swift */,
 				21A7D91E2A560F5000095E68 /* AnswerButton.swift */,
+				21E28A3A2A71C5EC006FD6C0 /* MainMathGame.swift */,
+				21CBC7E72A8D260800A0953D /* MainLayout.swift */,
 				21C2EDC92A6C005E00762882 /* StartContent.swift */,
 				213959852A576D7000C62055 /* SingleMatchNoLim.swift */,
 				21CAC4FA2A8A280800FD9322 /* SingleMatchTimed.swift */,
@@ -93,9 +102,9 @@
 				21C2EDD12A6C2DC500762882 /* xSingleGameContent.swift */,
 				219D882E2A58ED9000B38022 /* xTimerLogic_old.swift */,
 				21C2EDCE2A6C025E00762882 /* xBasics_Unused */,
-				21E28A3A2A71C5EC006FD6C0 /* MainMathGame.swift */,
 				21CAC4FC2A8A42A300FD9322 /* Background_Template.swift */,
 				21CAC4FE2A8B74EB00FD9322 /* Timer60s.swift */,
+				21CAC5002A8C148C00FD9322 /* TestForAlen.swift */,
 			);
 			path = MathGame;
 			sourceTree = "<group>";
@@ -195,13 +204,16 @@
 				213EE1E12A560C20005F6430 /* ContentView.swift in Sources */,
 				213EE1DF2A560C20005F6430 /* MathGameApp.swift in Sources */,
 				21E28A3B2A71C5EC006FD6C0 /* MainMathGame.swift in Sources */,
+				21CAC5012A8C148C00FD9322 /* TestForAlen.swift in Sources */,
 				213959862A576D7000C62055 /* SingleMatchNoLim.swift in Sources */,
 				21CAC4FB2A8A280800FD9322 /* SingleMatchTimed.swift in Sources */,
 				21C2EDD22A6C2DC500762882 /* xSingleGameContent.swift in Sources */,
 				217087DE2A59F1710049AC3D /* TimerLogic_Base.swift in Sources */,
+				21CBC7E82A8D260800A0953D /* MainLayout.swift in Sources */,
 				213959882A57728100C62055 /* xSingleMatchTimed.swift in Sources */,
 				21C2EDD42A6C2F8300762882 /* MenuButton.swift in Sources */,
 				21CAC4FF2A8B74EB00FD9322 /* Timer60s.swift in Sources */,
+				21CAC5052A8CCDE400FD9322 /* MainProperties.swift in Sources */,
 				219D882F2A58ED9000B38022 /* xTimerLogic_old.swift in Sources */,
 				217087DC2A59ED000049AC3D /* TimerLogic.swift in Sources */,
 				21CAC4FD2A8A42A300FD9322 /* Background_Template.swift in Sources */,

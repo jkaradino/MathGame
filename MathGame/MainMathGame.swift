@@ -14,13 +14,15 @@ struct MainMathGame: View {
     @State private var secondNumber = 0
     var difficulty = 1000
     @State private var score = 0
-    
+    let backgroundColor = MainProperties.BGColors.init()
     //
     var body: some View {
         VStack {
             Text("\(firstNumber) + \(secondNumber)")
                 .font(.largeTitle)
                 .bold()
+                .foregroundColor(backgroundColor.thirdColor)
+                
             
             HStack {
                 ForEach(0..<2) { index in
@@ -44,9 +46,18 @@ struct MainMathGame: View {
                 }
             }
             
-            Text("Score \(score)")
-                .font(.headline)
-                .bold()
+            HStack {
+                Text("Score: ")
+                    .font(.system(size: 20))
+                    //.bold()
+                    .foregroundColor(backgroundColor.thirdColor)
+                Text("\(score)")
+                    .font(.system(size: 27))
+                    .bold()
+                    .foregroundColor(backgroundColor.thirdColor)
+                    
+            }
+            
             
         }.onAppear(perform: generateAnswers)
     }
