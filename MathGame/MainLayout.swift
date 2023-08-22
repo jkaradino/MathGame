@@ -53,8 +53,14 @@ struct MainColorsOverview: View {
         VStack {
             backgroundColor.primaryColor
             backgroundColor.secondaryColor
-            backgroundColor.thirdColor
+                .brightness(0.15)
+             //   .contrast(1.1)
+            //backgroundColor.thirdColor
+            Color(red: 0.31, green: 0.416, blue: 0.561)
+            //Color.indigo
         }
+        
+      //  CGFloat red = self.btn.backgroundColor.CIColor.red;
     }
 }
 

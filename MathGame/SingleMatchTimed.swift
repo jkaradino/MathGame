@@ -15,6 +15,7 @@ struct SingleMatchTimed: View {
 
 struct SingleMatchTimed_Previews: PreviewProvider {
     static var previews: some View {
+        
         SingleMatchTimed()
     }
 }

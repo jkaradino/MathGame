@@ -13,7 +13,7 @@ struct MainProperties
 {
     struct BGColors {
         let primaryColor = Color.white
-        let secondaryColor = Color.mint
-        let thirdColor = Color.teal
+        let secondaryColor = Color.cyan
+        let thirdColor = Color(red: 0.31, green: 0.416, blue: 0.561) //Color.indigo
     }
 }

@@ -18,6 +18,18 @@ struct MainMathGame: View {
     //
     var body: some View {
         VStack {
+            Text("Just an easy addition of ...")
+                .font(.system(size: CGFloat(20), weight: .bold))
+                .frame(width: 250, height: 30)
+                .foregroundColor(backgroundColor.secondaryColor)
+                //.background(backgroundColor.secondaryColor.gradient)
+                //.clipShape(Capsule())
+                .padding(10)
+                //.border(backgroundColor.thirdColor, width: 6)
+                .overlay(
+                RoundedRectangle(cornerRadius: 30)
+                    .stroke(backgroundColor.thirdColor, lineWidth: 4))
+                .padding()
             Text("\(firstNumber) + \(secondNumber)")
                 .font(.largeTitle)
                 .bold()

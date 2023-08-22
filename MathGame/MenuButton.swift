@@ -19,6 +19,7 @@ struct MenuButton: View {
             .background(backgroundColor.secondaryColor.gradient)
             .font(.system(size: CGFloat(ButtonSize), weight: .bold))
             .foregroundColor(backgroundColor.primaryColor)
+            //.clipShape()
     }
 }
 
