@@ -12,7 +12,7 @@ struct Background_Template: View {
         
         ///Color.teal
         ///
-        var WhichColorsToDisplay: Int = 1
+        //var WhichColorsToDisplay: Int = 1
         
         ColorCollection()
         
