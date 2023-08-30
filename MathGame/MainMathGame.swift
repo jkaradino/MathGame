@@ -29,33 +29,58 @@ struct MainMathGame: View {
                 .overlay(
                 RoundedRectangle(cornerRadius: 30)
                     .stroke(backgroundColor.thirdColor, lineWidth: 4))
-                .padding()
-            Text("\(firstNumber) + \(secondNumber)")
-                .font(.largeTitle)
-                .bold()
-                .foregroundColor(backgroundColor.thirdColor)
-                
+                .padding(35)
             
-            HStack {
-                ForEach(0..<2) { index in
-                    Button {
-                        answerIsCorrect(answer: choiceArray[index])
-                        generateAnswers()
-                    } label: {
-                        AnswerButton(number: choiceArray[index])
+            
+            Group {
+                VStack {
+                    HStack {
+                        
+                        Image(systemName: "function")
+                        Text("=")
+                            .italic()
+                        
+                            
                     }
+                    //Spacer()
+                    Text("\(firstNumber) + \(secondNumber)")
+                        .font(.largeTitle)
+                        .bold()
+                        .foregroundColor(backgroundColor.thirdColor)
                 }
             }
+            .frame(width: 340, height: 120)
+            .background(Color(red: 0.71, green: 0.816, blue: 0.961).opacity(0.4).gradient)
+            //.padding()
             
-            HStack {
-                ForEach(2..<4) { index in
-                    Button {
-                        answerIsCorrect(answer: choiceArray[index])
-                        generateAnswers()
-                    } label: {
-                        AnswerButton(number: choiceArray[index])
+            
+                
+            GroupBox(label: Label("Test", systemImage: "function")) {
+                HStack {
+                    ForEach(0..<2) { index in
+                        Button {
+                            answerIsCorrect(answer: choiceArray[index])
+                            generateAnswers()
+                        } label: {
+                            AnswerButton(number: choiceArray[index])
+                        }
                     }
                 }
+                .frame(width: 340, height: 120)
+                .background(Color.gray.opacity(0.3))
+                //Spacer()
+                HStack {
+                    ForEach(2..<4) { index in
+                        Button {
+                            answerIsCorrect(answer: choiceArray[index])
+                            generateAnswers()
+                        } label: {
+                            AnswerButton(number: choiceArray[index])
+                        }
+                    }
+                }
+                .frame(width: 340, height: 120)
+                .background(Color.blue.opacity(0.4))
             }
             
             HStack {

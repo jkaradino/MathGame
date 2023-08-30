@@ -14,11 +14,11 @@ struct AnswerButton: View {
     
     var body: some View {
         Text("\(number)")
-            .frame(width: 110, height: 110)
+            .frame(width: 140, height: 100)
             .font(.system(size: 40, weight: .bold))
             .foregroundColor(backgroundColor.primaryColor)
             .background(backgroundColor.secondaryColor.gradient)
-            .clipShape(Circle())
+            .clipShape(Capsule())
             .padding()
     }
 }
