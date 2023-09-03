@@ -22,9 +22,12 @@ struct MainMathGame: View {
     //
     var body: some View {
         VStack {
-            Text("Just an easy addition of ...")
+            VStack {
+                Image(systemName: "stop")
+                Text("STOP")
+            }
                 .font(.system(size: CGFloat(20), weight: .bold))
-                .frame(width: 250, height: 30)
+                .frame(width: 110, height: 30)
                 .foregroundColor(backgroundColor.secondaryColor)
                 //.background(backgroundColor.secondaryColor.gradient)
                 //.clipShape(Capsule())

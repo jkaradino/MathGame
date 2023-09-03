@@ -27,7 +27,7 @@ class GlobalVariables: ObservableObject {
     @Published var firstNumber = 0
     @Published var secondNumber = 0
     // TimerLogic()
-    @Published var timeSeconds = 0
-    @Published var minutes = 0
+    @Published var Seconds = 0
+    @Published var Minutes = 0
     
 }

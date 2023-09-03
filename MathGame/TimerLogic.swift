@@ -26,7 +26,8 @@ struct TimerLogic: View {
                     Text(":")
                     Text("\(seconds)")
                 }
-                .font(Font.title)
+                //.font(Font.title)
+                .font(.system(size: 20, weight: .bold))
                 .bold()
                 Text(":")
                 Text("\(mseconds)")
@@ -40,7 +41,7 @@ struct TimerLogic: View {
             if seconds == 3 {
                 self.stopTimer()
             }
-            outputData.timeSeconds = seconds
+            outputData.Seconds = seconds
                 
                 //self.restartTimer()
         }
@@ -71,7 +72,7 @@ struct TimerLogic: View {
             } else {
                 self.mseconds = self.mseconds + 1
             }
-            outputData.timeSeconds = seconds
+            outputData.Seconds = seconds
         }
     }
     

@@ -19,7 +19,11 @@ struct CountDownToPlay: View {
     @State var CounterIsZero: Bool = false
     @State var CountDownText: String = ""
     let backgroundColor = MainProperties.BGColors.init()
-    @State var DynSizeOfNumber: Int = 0
+    @State var DynSizeOfNumber: Float = 0.0
+    
+    // Timer for increasing the size dynamically
+    @State var MStimer: Timer? = nil
+    @State var msec: Int = 0
     
     // Test variabled (will be deleted)
     @State var testVaer: String = ""
@@ -30,39 +34,76 @@ struct CountDownToPlay: View {
     func SizeOfNumber() {
         //let maxFrameWidth: Int
         //let maxFrameLenght: Int
-        let maxSize: Int = 0
+        let maxSize: Int = 100
         let minSize: Int = 0
-        @State var testvar: Bool = false
+        @State var enableRepeat: Bool = true
+        var numberRepeats: Int = 0
+        DynSizeOfNumber = 0.0
+        
+        if numberRepeats > 4 {
+            DynSizeOfNumber = 0.0
+            self.stopTimer()
+            enableRepeat = false
+        }
+        
+        timer = Timer.scheduledTimer(withTimeInterval: 0.001, repeats: enableRepeat) { tempTimer in
+            let factorSize: Float = 15.0
+            // Logic for timer counting up
+            if self.msec == 999 {
+                self.msec = 0
+                numberRepeats += 1
+                //DynSizeOfNumber = -1
+            } else {
+                self.msec = self.msec + 1
+                DynSizeOfNumber = Float(msec) / factorSize
+            }
+            
+            for msec in 0..<999 {
+                
+            }
+            //outputData.timeSeconds = seconds
+        }
         
         // Output
         var dynFontSize: Int = minSize
         
-        while dynFontSize < maxSize {
-            dynFontSize = dynFontSize + 1
-            DynSizeOfNumber = dynFontSize
+        while (dynFontSize < maxSize) {
+            dynFontSize+=1
+            //DynSizeOfNumber = dynFontSize
         }
     }
     
-    
     var body: some View {
-        //self.SizeOfNumber()
         VStack {
-            if seconds == 0 {
-                Text("GO!")
+            Group {
+                if seconds == 0 {
                     
-            } else {
-                Text("\(seconds)")
-                    .frame(width: 110, height: 110)
-                    .font(.system(size: 40, weight: .bold))
-                    //.background(backgroundColor.secondaryColor)
-                    .scaleEffect(4)
-                    .foregroundColor(backgroundColor.secondaryColor)
-                    //.clipShape(Capsule())
-                    .padding()
+                    Text("GO")
+                } else {
+                    if seconds > 0 {
+                        Text("\(seconds)")
+                    }
+                }
+                
+//                if CounterIsZero == true {
+//                    Text("zero")
+//                } else {
+//                    Text("not")
+//                }
                     
             }
+            .frame(width: 110, height: 110)
+            .font(.system(size: CGFloat(DynSizeOfNumber), weight: .bold))
+        //.background(backgroundColor.secondaryColor)
+            .scaleEffect(4)
+            .foregroundColor(backgroundColor.secondaryColor)
+        //.clipShape(Capsule())
+            .padding()
             //SizeOf
-            Text("\(DynSizeOfNumber)")
+            //Text("\(DynSizeOfNumber)")
+            //Text("\(msec)")
+            
+                
         }
         .onAppear {
             if CounterIsZero == true {
@@ -70,11 +111,13 @@ struct CountDownToPlay: View {
                 //CountDownText = "GO"
                 outputData.CounterIsZero = true
                 outputData.CountDownText = "abc"
+                //SizeOfNumber()
             }
             if CounterIsZero == false {
                 self.startTimer()
                 CountDownText = "\(seconds)"
                 outputData.CountDownText = "def"
+                SizeOfNumber()
             }
         }
         //.environmentObject(outputData)
@@ -93,24 +136,25 @@ struct CountDownToPlay: View {
             timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { tempTimer in
                 // Logic for timer counting up
                 if self.seconds == 0 {
-                    self.seconds = 0
+                    self.seconds = -1
                     CounterIsZero = true
-                    testVaer = "is 0"
-                    //ExchangeVariables()
                     outputData.CounterIsZero = true
-                    //writeData.CountDownText = "true"
-                
-                    
                 } else {
-                    self.seconds = self.seconds - 1
-                    CounterIsZero = false
-                    testVaer = "not zero"
-                    outputData.CounterIsZero = false
-                    //writeData.CountDownText = "false"
+                    if self.seconds > -1 {
+                        self.seconds = self.seconds - 1
+                        CounterIsZero = false
+                        outputData.CounterIsZero = false
+                    }
                 }
-                //
             }
+        }
+    
+    func stopTimer() {
+        timerIsPaused = true
+        timer?.invalidate()
+        timer = nil
     }
+    
 }
 
 struct CountDownToPlay_Previews: PreviewProvider {

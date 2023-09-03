@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-let disableCounter4TestMode = true
+let disableCounter4TestMode = false
 
 
 
@@ -16,7 +16,10 @@ struct SingleMatchTimeLim: View {
     init(globalVar: GlobalVariables) {
         _globalVar = StateObject(wrappedValue: { GlobalVariables() }())}
     
+    
+    
     var body: some View {
+        var sec = globalVar.Seconds
         VStack {
             MainMathGame()
                 .environmentObject(globalVar)
@@ -28,7 +31,7 @@ struct SingleMatchTimeLim: View {
                     //.background(Color.green)
             
             }
-            Text("\(globalVar.timeSeconds)")
+            //Text("\(globalVar.Seconds)")
         }
         
         
