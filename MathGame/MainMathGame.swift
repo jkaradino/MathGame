@@ -13,8 +13,12 @@ struct MainMathGame: View {
     @State private var firstNumber = 0
     @State private var secondNumber = 0
     var difficulty = 1000
+    
     @State private var score = 0
     let backgroundColor = MainProperties.BGColors.init()
+    
+    @EnvironmentObject var outputData: GlobalVariables
+    
     //
     var body: some View {
         VStack {
@@ -52,6 +56,7 @@ struct MainMathGame: View {
             .frame(width: 340, height: 120)
             .background(Color(red: 0.71, green: 0.816, blue: 0.961).opacity(0.4).gradient)
             //.padding()
+            .border(backgroundColor.thirdColor, width: 6)
             
             
                 
@@ -81,7 +86,7 @@ struct MainMathGame: View {
                 }
                 .frame(width: 340, height: 120)
                 .background(Color.blue.opacity(0.4))
-            }
+            } // Groupbox end
             
             HStack {
                 Text("Score: ")
@@ -94,6 +99,10 @@ struct MainMathGame: View {
                     .foregroundColor(backgroundColor.thirdColor)
                     
             }
+            
+            // Counter
+            //Text("Countertext Test")
+            
             
             
         }.onAppear(perform: generateAnswers)
@@ -132,5 +141,6 @@ struct MainMathGame_Previews: PreviewProvider {
     static var previews: some View {
         MainMathGame()
         //SingleMatchNoLim()
+            .environmentObject(GlobalVariables())
     }
 }

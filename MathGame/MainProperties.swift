@@ -17,3 +17,17 @@ struct MainProperties
         let thirdColor = Color(red: 0.31, green: 0.416, blue: 0.561) //Color.indigo
     }
 }
+
+class GlobalVariables: ObservableObject {
+    // from CountDownToPlay()
+    @Published var CounterIsZero: Bool = false
+    @Published var CountDownText: String = "aaa"
+    // MainMathGame()
+    @Published var score: Int = 0
+    @Published var firstNumber = 0
+    @Published var secondNumber = 0
+    // TimerLogic()
+    @Published var timeSeconds = 0
+    @Published var minutes = 0
+    
+}

@@ -14,13 +14,23 @@ struct SingleMatchNoLim: View {
     @State private var secondNumber = 0
     @State private var difficulty = 1000
     @State private var score = 0
+    var movesPerGame = 30
+    
+   
     
     //
     var body: some View {
-        Color.white.blur(radius: 3)
-            .brightness(0.07)
-            .overlay(
-        MainMathGame(difficulty: 1000))
+//        Color.white.blur(radius: 3)
+//            .brightness(0.07)
+//            .overlay(
+//        MainMathGame(difficulty: 1000)
+//            )
+        VStack {
+            MainMathGame(difficulty: 1000)
+            
+        }
+        
+        
     }
 }
 

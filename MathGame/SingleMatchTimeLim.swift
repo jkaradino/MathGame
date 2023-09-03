@@ -7,34 +7,59 @@
 
 import SwiftUI
 
+let disableCounter4TestMode = true
+
+
+
 struct SingleMatchTimeLim: View {
-    @StateObject private var model: cntExchangeVariables
-    var testVar: Bool = false
-    
-    init(model: cntExchangeVariables) {
-        _model = StateObject(wrappedValue: { cntExchangeVariables() }())
-    }
+    @StateObject private var globalVar: GlobalVariables
+    init(globalVar: GlobalVariables) {
+        _globalVar = StateObject(wrappedValue: { GlobalVariables() }())}
     
     var body: some View {
-        //let CountDownVar = CountDownToPlay.init(outputData: cntExchangeVariables())
-        //var CntZero = CountDownVar.outputData.CounterIsZero
+        VStack {
+            MainMathGame()
+                .environmentObject(globalVar)
+            GroupBox {
+                TimerLogic()
+                    .environmentObject(globalVar)
+                    //.frame(width: 140, height: 60)
+                    //.font(.system(size: 10, weight: .light))
+                    //.background(Color.green)
+            
+            }
+            Text("\(globalVar.timeSeconds)")
+        }
+        
+        
+    }
+}
 
+struct SingleMatchTimeLimSel: View {
+    @StateObject private var globalVar: GlobalVariables
+    init(globalVar: GlobalVariables) {
+        _globalVar = StateObject(wrappedValue: { GlobalVariables() }())}
+    
+    var body: some View {
         ZStack {
             //Text("\(model.CountDownText)")
-            if model.CounterIsZero == true {
-                MainMathGame()
-            } else {
+            if globalVar.CounterIsZero == true {
+                SingleMatchTimeLim(globalVar: GlobalVariables())
+            }
+            if disableCounter4TestMode == true {
+                SingleMatchTimeLim(globalVar: GlobalVariables())
+            }
+            else {
                 CountDownToPlay()
-                    .environmentObject(model) // this is very important
+                    .environmentObject(globalVar) // this is very important
             }
         }
-        //.environmentObject(CountDownVar)
     }
 }
 
 struct SingleMatchTimeLimCaller: View {
     var body: some View {
-        SingleMatchTimeLim(model: cntExchangeVariables())
+        SingleMatchTimeLimSel(globalVar: GlobalVariables())
     }
 }
 

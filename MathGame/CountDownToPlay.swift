@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-class cntExchangeVariables: ObservableObject {
-    @Published var CounterIsZero: Bool = false
-    @Published var CountDownText: String = "aaa"
-}
+//class cntExchangeVariables: ObservableObject {
+//    @Published var CounterIsZero: Bool = false
+//    @Published var CountDownText: String = "aaa"
+//}
 
 struct CountDownToPlay: View {
     @State var seconds: Int = 3
@@ -23,13 +23,13 @@ struct CountDownToPlay: View {
     
     // Test variabled (will be deleted)
     @State var testVaer: String = ""
-    @EnvironmentObject var outputData: cntExchangeVariables
+    @EnvironmentObject var outputData: GlobalVariables
     
 //    @EnvironmentObject var writeData: cntExchangeVariables
     
     func SizeOfNumber() {
-        let maxFrameWidth: Int
-        let maxFrameLenght: Int
+        //let maxFrameWidth: Int
+        //let maxFrameLenght: Int
         let maxSize: Int = 0
         let minSize: Int = 0
         @State var testvar: Bool = false
@@ -116,6 +116,6 @@ struct CountDownToPlay: View {
 struct CountDownToPlay_Previews: PreviewProvider {
     static var previews: some View {
         CountDownToPlay()
-            .environmentObject(cntExchangeVariables())
+            .environmentObject(GlobalVariables())
     }
 }

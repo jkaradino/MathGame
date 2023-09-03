@@ -15,47 +15,34 @@ struct TimerLogic: View {
     @State var timerIsPaused: Bool = true
     @State var timer: Timer? = nil
     
+    @EnvironmentObject var outputData: GlobalVariables
+    
     var body: some View {
-        VStack {
-            Text("\(minutes):\(seconds):\(mseconds)")
-                .font(Font.title)
-            
-//            if seconds > 5 {
-//                self.restartTimer()
-//            } else {
-//                self.stopTimer()
-//            }
-                
-            if timerIsPaused {
-                HStack {
-                    Button(action: {
-                        self.restartTimer()
-                        print("RESTART / New Game")
-                    }) {
-                        Image(systemName: "backward")
-                            .padding(.all)
-                    }
-                    .padding(.all)
-                    
-                    Button(action: {
-                        self.startTimer()
-                        print("START")
-                    }) {
-                        Image(systemName: "play")
-                            .padding(.all)
-                    }
-                    .padding(.all)
+        HStack {
+         //   if seconds < 60 {
+            Group {
+                Group {
+                    Text("\(minutes)")
+                    Text(":")
+                    Text("\(seconds)")
                 }
-                } else {
-                    Button(action: {
-                        self.stopTimer()
-                        print("STOP")
-                    }) {
-                        Image(systemName: "pause")
-                            .padding(.all)
-                    }
-                    .padding(.all)
+                .font(Font.title)
+                .bold()
+                Text(":")
+                Text("\(mseconds)")
             }
+        }
+        .onAppear() {
+            if seconds < 3
+            {
+                self.startTimer()
+            }
+            if seconds == 3 {
+                self.stopTimer()
+            }
+            outputData.timeSeconds = seconds
+                
+                //self.restartTimer()
         }
     }
     
@@ -69,6 +56,7 @@ struct TimerLogic: View {
     func startTimer() {
         
         timerIsPaused = false
+        //outputData.timeSeconds = seconds
         
         timer = Timer.scheduledTimer(withTimeInterval: 0.001, repeats: true) { tempTimer in
             // Logic for timer counting up
@@ -83,6 +71,7 @@ struct TimerLogic: View {
             } else {
                 self.mseconds = self.mseconds + 1
             }
+            outputData.timeSeconds = seconds
         }
     }
     
@@ -97,6 +86,7 @@ struct TimerLogic: View {
 struct TimerLogic_Previews: PreviewProvider {
     static var previews: some View {
         TimerLogic()
+            .environmentObject(GlobalVariables())
     }
 }
 

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TestForAlen: View {
     var body: some View {
-        var kevinbloed: String = "Kevin ist blöd"
+        let kevinbloed: String = "Kevin ist blöd"
         lazy var butText = MainProperties.BGColors.init()
         
         VStack {
