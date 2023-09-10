@@ -16,7 +16,7 @@ struct MenuButton: View {
     var body: some View {
         Text("\(buttonText)")
             .frame(width: 350, height: 100)
-            .background(backgroundColor.secondaryColor.gradient)
+            .background(backgroundColor.secondary2Color.gradient)
             .font(.system(size: CGFloat(ButtonSize), weight: .bold))
             .foregroundColor(backgroundColor.primaryColor)
             //.clipShape()

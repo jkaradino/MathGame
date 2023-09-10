@@ -57,11 +57,6 @@ struct CountDownToPlay: View {
                 self.msec = self.msec + 1
                 DynSizeOfNumber = Float(msec) / factorSize
             }
-            
-            for msec in 0..<999 {
-                
-            }
-            //outputData.timeSeconds = seconds
         }
         
         // Output
@@ -84,13 +79,6 @@ struct CountDownToPlay: View {
                         Text("\(seconds)")
                     }
                 }
-                
-//                if CounterIsZero == true {
-//                    Text("zero")
-//                } else {
-//                    Text("not")
-//                }
-                    
             }
             .frame(width: 110, height: 110)
             .font(.system(size: CGFloat(DynSizeOfNumber), weight: .bold))
@@ -120,16 +108,12 @@ struct CountDownToPlay: View {
                 SizeOfNumber()
             }
         }
-        //.environmentObject(outputData)
     }
         
         func restartTimer() {
             seconds = 0
             testVaer = "restartTimer func"
             CounterIsZero = true
-            //outputData.CounterIsZero = true
-            //ExchangeVariables(CounterIsZero: true)
-           
         }
         
         func startTimer() {

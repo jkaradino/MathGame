@@ -14,10 +14,10 @@ struct SingleMatchNoLim: View {
     @State private var secondNumber = 0
     @State private var difficulty = 1000
     @State private var score = 0
-    var movesPerGame = 30
-    
-   
-    
+    //var movesPerGame = 30
+    @StateObject private var globalVar: GlobalVariables
+    init(globalVar: GlobalVariables) {
+        _globalVar = StateObject(wrappedValue: { GlobalVariables() }())}
     //
     var body: some View {
 //        Color.white.blur(radius: 3)
@@ -26,17 +26,24 @@ struct SingleMatchNoLim: View {
 //        MainMathGame(difficulty: 1000)
 //            )
         VStack {
-            MainMathGame(difficulty: 1000)
-            
+            MainMathGame(difficulty: 1000, showTimer: false)
+                .environmentObject(globalVar)
         }
-        
-        
     }
 }
+
+struct SingleMatchNoLimCaller: View {
+    var body: some View {
+        SingleMatchNoLim(globalVar: GlobalVariables())
+    }
+}
+
 
 struct SingleMatchNoLim_Previews: PreviewProvider {
     static var previews: some View {
         //MainMathGame()
-        SingleMatchNoLim()
+        SingleMatchNoLimCaller()
+            //.toolbar(.hidden, for: .navigationBar)
+            
     }
 }

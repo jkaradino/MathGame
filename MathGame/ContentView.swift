@@ -17,7 +17,9 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         //SingleMatchNoLim()
-        StartContent()
+        //TabView {
+            StartContent()
+        //}
     }
     
 }

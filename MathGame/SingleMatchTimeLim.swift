@@ -7,7 +7,8 @@
 
 import SwiftUI
 
-let disableCounter4TestMode = false
+/// TEST PARAMETER
+let disableCounter4TestMode = true  // init false
 
 
 
@@ -16,23 +17,47 @@ struct SingleMatchTimeLim: View {
     init(globalVar: GlobalVariables) {
         _globalVar = StateObject(wrappedValue: { GlobalVariables() }())}
     
-    
+    @State private var maxTimeReached: Bool = false
+    @State private var enaStopBottom: Bool = false
     
     var body: some View {
         var sec = globalVar.Seconds
         VStack {
-            MainMathGame()
-                .environmentObject(globalVar)
-            GroupBox {
-                TimerLogic()
-                    .environmentObject(globalVar)
-                    //.frame(width: 140, height: 60)
-                    //.font(.system(size: 10, weight: .light))
-                    //.background(Color.green)
             
-            }
+            
+            Button(action: {
+                enaStopBottom.toggle()
+            }, label: {
+                GroupBox {
+                    Image(systemName: "stop")
+                    Text("STOP GAME")}
+                .border(Color.red)
+            })
+            
+            MainMathGame(difficulty: 100, showTimer: true, holdTimer: enaStopBottom)
+                .environmentObject(globalVar)
+                
+//            GroupBox {
+//                TimerLogic()
+//                    .environmentObject(globalVar)
+//            }
+            
             //Text("\(globalVar.Seconds)")
         }
+        if enaStopBottom == true {
+            Text("\(sec)")
+        }
+        //.sheet(isPresented: $maxTimeReached, content: Text("text"))
+        
+        
+//        .sheet(isPresented: $showComposeMessageView, content: {
+//            ZStack {
+//                Color.blue
+//                Text("😀")      // control + command + space
+//            }
+
+        //})
+        
         
         
     }

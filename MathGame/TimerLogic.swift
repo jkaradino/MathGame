@@ -7,6 +7,14 @@
 
 import SwiftUI
 
+func setZero() {
+    @EnvironmentObject var outputData: GlobalVariables
+    
+    outputData.Seconds = 0
+    outputData.Minutes = 0
+        
+}
+
 struct TimerLogic: View {
     //@State var hours: Int = 0
     @State var minutes: Int = 0
@@ -14,8 +22,12 @@ struct TimerLogic: View {
     @State var mseconds: Int = 0
     @State var timerIsPaused: Bool = true
     @State var timer: Timer? = nil
-    
+    var holdTimer: Bool = false
     @EnvironmentObject var outputData: GlobalVariables
+    
+    // Test
+    let timer2 = Timer.publish(every: 1.0, on: .main, in: .common).autoconnect()
+    
     
     var body: some View {
         HStack {
@@ -31,27 +43,50 @@ struct TimerLogic: View {
                 .bold()
                 Text(":")
                 Text("\(mseconds)")
+                
+                
             }
+//            if holdTimer {
+//                setZero()
+//            }
+            
         }
-        .onAppear() {
-            if seconds < 3
-            {
-                self.startTimer()
-            }
-            if seconds == 3 {
+        .onReceive(timer2, perform: { _ in
+            
+        
+        //{
+            if holdTimer {
+                //seconds = 0
                 self.stopTimer()
+                //seconds = 1
+            }
+            else {
+                //self.startTimer()
+                self.startTimer()
             }
             outputData.Seconds = seconds
                 
                 //self.restartTimer()
-        }
+        
+        })
+        //}
+    
+//        if seconds > 3 {
+//            //restartTimer()
+//            //MainMathGame()
+//        }
+//        if holdTimer {
+//            setZero()
+//        }
+        
+        
     }
     
     func restartTimer() {
         // dummy
-        minutes = 0
-        seconds = 0
-        mseconds = 0
+        self.minutes = 0
+        self.seconds = 0
+        self.mseconds = 0
     }
     
     func startTimer() {
@@ -59,7 +94,7 @@ struct TimerLogic: View {
         timerIsPaused = false
         //outputData.timeSeconds = seconds
         
-        timer = Timer.scheduledTimer(withTimeInterval: 0.001, repeats: true) { tempTimer in
+        timer = Timer.scheduledTimer(withTimeInterval: 0.001, repeats: !holdTimer) { tempTimer in
             // Logic for timer counting up
             if self.mseconds == 999 {
                 self.mseconds = 0
@@ -81,6 +116,10 @@ struct TimerLogic: View {
         timer?.invalidate()
         timer = nil
     }
+    
+//    if seconds == 0 {
+//        self.startTimer()
+//    }
 
 }
 
