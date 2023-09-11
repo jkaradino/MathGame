@@ -8,7 +8,7 @@
 import SwiftUI
 
 /// TEST PARAMETER
-let disableCounter4TestMode = true  // init false
+let disableCounter4TestMode = false  // init false
 
 
 
@@ -23,18 +23,7 @@ struct SingleMatchTimeLim: View {
     var body: some View {
         var sec = globalVar.Seconds
         VStack {
-            
-            
-            Button(action: {
-                enaStopBottom.toggle()
-            }, label: {
-                GroupBox {
-                    Image(systemName: "stop")
-                    Text("STOP GAME")}
-                .border(Color.red)
-            })
-            
-            MainMathGame(difficulty: 100, showTimer: true, holdTimer: enaStopBottom)
+            MainMathGame(difficulty: 100, showTimer: true)
                 .environmentObject(globalVar)
                 
 //            GroupBox {
@@ -87,7 +76,10 @@ struct SingleMatchTimeLimSel: View {
 
 struct SingleMatchTimeLimCaller: View {
     var body: some View {
-        SingleMatchTimeLimSel(globalVar: GlobalVariables())
+        ZStack {
+            MainLayout()
+            SingleMatchTimeLimSel(globalVar: GlobalVariables())
+        }
     }
 }
 

@@ -5,6 +5,8 @@
 //  Created by Jasmin Karadinovic on 26.07.23.
 //
 
+// Tasks and functions within this Method
+
 import SwiftUI
 
 struct MainMathGame: View {
@@ -12,55 +14,55 @@ struct MainMathGame: View {
     @State private var choiceArray: [Int] = [0,1,2,3]
     @State private var firstNumber = 0
     @State private var secondNumber = 0
-    var difficulty = 1000
+    var difficulty = 100
     var showTimer = true
-    var holdTimer = false
+    var timeLim: Int = 3
+    //var holdTimer = false
     
     // add new timer variables to implement timer here
     @State var minutes: Int = 0
     @State var seconds: Int = 0
     @State var mseconds: Int = 0
-    @State private var enaStopBottom: Bool = false
+    //@State private var enaStopBottom: Bool = false
     @State var timerIsPaused: Bool = false
     @State var timer: Timer? = nil
     
     @State var timerIsCounting: Bool = true
+    @State var finishedGame: Bool = false
     
     @State private var score = 0
     let backgroundColor = MainProperties.BGColors.init()
     
     @EnvironmentObject var outputData: GlobalVariables
     
-    //
     var body: some View {
-        
         VStack {
-            
-            Button(action: {
-                timerIsCounting.toggle()
-            }, label: {
+            if timerIsCounting {
+                Button(action: {
+                    timerIsCounting.toggle()
+                }, label: {
+                    GroupBox {
+                        //Image(systemName: "stop"
+                        Text("STOP GAME")
+                            .foregroundColor(Color.red)
+                    }
+                    .padding()
+                })
+            } else {
                 GroupBox {
-                    //Image(systemName: "stop")
-                    Text("STOP GAME")
-                        .foregroundColor(Color.red)
+                    Text("STOPPED")
+                        .foregroundColor(Color.gray)
                 }
-                //.border(Color.red)
-            }) // Stop Button
-            .padding(20)
-            
-            
-            // hier wars
-            
-            
+                .padding()
+            }
+
             Group {
                 VStack {
                     HStack {
-                        
                         Image(systemName: "function")
                         Text("=")
                             .italic()
                     }
-                    //Spacer()
                     Text("\(firstNumber) + \(secondNumber)")
                         .font(.largeTitle)
                         .bold()
@@ -71,36 +73,47 @@ struct MainMathGame: View {
             .background(Color(red: 0.71, green: 0.816, blue: 0.961).opacity(0.4).gradient)
             //.padding()
             .border(backgroundColor.secondary2Color, width: 6)
-            
+            .padding()
             
                 
-            GroupBox(label: Label("Test", systemImage: "function")) {
-                HStack {
-                    ForEach(0..<2) { index in
-                        Button {
-                            answerIsCorrect(answer: choiceArray[index])
-                            generateAnswers()
-                        } label: {
-                            AnswerButton(number: choiceArray[index])
+            Group() {
+                Text("Choose the correct answer!")
+                VStack {
+                    HStack {
+                        //Spacer()
+                        ForEach(0..<2) { index in
+                            Button {
+                                answerIsCorrect(answer: choiceArray[index])
+                                generateAnswers()
+                            } label: {
+                                AnswerButton(number: choiceArray[index])
+                            }
+                            
+                        }
+                        
+                    }
+                    //.frame(width: 340, height: 120)
+                    //.background(Color.gray.opacity(0.3))
+                    //Spacer()
+                    //.padding(0.1)
+                    HStack {
+                        ForEach(2..<4) { index in
+                            Button {
+                                answerIsCorrect(answer: choiceArray[index])
+                                generateAnswers()
+                            } label: {
+                                AnswerButton(number: choiceArray[index])
+                            }
                         }
                     }
+                    //.frame(width: 340, height: 120)
+                    //.background(Color.blue.opacity(0.4))
+                    //.frame(width: 340, height: 120)
                 }
-                .frame(width: 340, height: 120)
-                .background(Color.gray.opacity(0.3))
-                //Spacer()
-                HStack {
-                    ForEach(2..<4) { index in
-                        Button {
-                            answerIsCorrect(answer: choiceArray[index])
-                            generateAnswers()
-                        } label: {
-                            AnswerButton(number: choiceArray[index])
-                        }
-                    }
-                }
-                .frame(width: 340, height: 120)
-                .background(Color.blue.opacity(0.4))
+                .background(backgroundColor.thirdColor.opacity(0.07))
+    
             } // 2nd Element (Answer Options)
+            //.background(Color.blue.opacity(0.4))
             
             HStack {
                 Text("Score: ")
@@ -116,65 +129,28 @@ struct MainMathGame: View {
             .padding()
             if showTimer {
                 VStack {
-//                    GroupBox {
-//                        TimerLogic(holdTimer: true)
-//                        //.environmentObject(globalVar)
-//                    }
-                    //Text("\(minutes):\(seconds):\(mseconds)")
-                    
-                    
                     if timerIsCounting {
-                        Text("\(minutes):\(seconds):\(mseconds)")
+                        TimerText(min: minutes, sec: seconds, msec: mseconds)
                             .onAppear(perform: {
                                 self.startTimer()
                             })
                             
                     } else {
-                        Text("\(minutes):\(seconds):\(mseconds)")
+                        //Text("\(minutes):\(seconds):\(mseconds)")
+                        TimerText(min: minutes, sec: seconds, msec: mseconds)
                             .onAppear(perform: {
                                 self.stopTimer()
+                                finishedGame = true
                             })
                     }
-                    
-                    
-                    
-                    //self.startTimer()
-//                    if timerIsCounting {
-//                        HStack {
-//                            //self.startTimer()
-//                            Button(action: {
-//                                self.restartTimer()
-//                            }) {
-//                                Image(systemName: "backward")
-//                                    .padding(.all)
-//                            }
-//                            .padding(.all)
-//
-//                            Button(action: {
-//                                self.startTimer()
-//                            }) {
-//                                Image(systemName: "play")
-//                                    .padding(.all)
-//                            }
-//                            .padding(.all)
-//                        }
-//                        } else {
-//                            Button(action: {
-//                                self.stopTimer()
-//                                print("STOP")
-//                            }) {
-//                                Image(systemName: "pause")
-//                                    .padding(.all)
-//                            }
-//                            .padding(.all)
-//                    }
-                
-                    
                 } // 4th Element (Timer)
+                .sheet(isPresented: $finishedGame, content: {
+                    Text("test")
+                })
             }
-            
-            
-        }.onAppear(perform: generateAnswers)
+        }
+        .onAppear(perform: generateAnswers)
+        
     }
     //
     
@@ -206,11 +182,10 @@ struct MainMathGame: View {
     }
     
     func restartTimer() {
-        // dummy
         minutes = 0
         seconds = 0
         mseconds = 0
-    }
+    } // not in use
     
     func startTimer() {
         timerIsPaused = false
@@ -236,8 +211,31 @@ struct MainMathGame: View {
         timer?.invalidate()
         timer = nil
     }
-    
-    
+}
+
+struct TimerText: View {
+    var min: Int
+    var sec: Int
+    var msec: Int
+    var body: some View {
+    let backgroundColor = MainProperties.BGColors.init()
+        
+        HStack {
+            Group {
+                Group {
+                    Text("\(min)")
+                    Text(":")
+                    Text("\(sec)")
+                }
+                .font(.system(size: 20, weight: .bold))
+                .bold()
+                .foregroundColor(backgroundColor.thirdColor)
+                Text(":")
+                Text("\(msec)")
+                    .foregroundColor(backgroundColor.thirdColor)
+            }
+        }
+    }
 }
 
 struct MainMathGame_Previews: PreviewProvider {

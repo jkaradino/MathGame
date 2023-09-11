@@ -34,7 +34,11 @@ struct SingleMatchNoLim: View {
 
 struct SingleMatchNoLimCaller: View {
     var body: some View {
-        SingleMatchNoLim(globalVar: GlobalVariables())
+        ZStack {
+            MainLayout()
+            SingleMatchNoLim(globalVar: GlobalVariables())
+        }
+        
     }
 }
 
@@ -42,8 +46,10 @@ struct SingleMatchNoLimCaller: View {
 struct SingleMatchNoLim_Previews: PreviewProvider {
     static var previews: some View {
         //MainMathGame()
-        SingleMatchNoLimCaller()
+        ZStack {
+            MainLayout()
+            SingleMatchNoLimCaller()
             //.toolbar(.hidden, for: .navigationBar)
-            
+        }
     }
 }

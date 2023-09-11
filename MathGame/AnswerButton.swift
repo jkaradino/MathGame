@@ -13,13 +13,19 @@ struct AnswerButton: View {
     let backgroundColor = MainProperties.BGColors.init()
     
     var body: some View {
-        Text("\(number)")
-            .frame(width: 140, height: 100)
-            .font(.system(size: 40, weight: .bold))
-            .foregroundColor(backgroundColor.primaryColor)
-            .background(backgroundColor.secondaryColor.gradient)
-            .clipShape(Capsule())
-            .padding()
+        
+        ZStack {
+            RoundedRectangle(cornerRadius: 20)
+                .frame(width: 190, height: 100)
+                .foregroundColor(backgroundColor.secondary3Color)
+            Text("\(number)")
+                //.frame(width: 200, height: 100)
+                .font(.system(size: 40, weight: .bold))
+                .foregroundColor(backgroundColor.primaryColor)
+                //.background(backgroundColor.secondaryColor.gradient)
+                .clipShape(Rectangle())
+                .padding()
+        }
     }
 }
 
