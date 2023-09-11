@@ -18,6 +18,7 @@ struct AnswerButton: View {
             RoundedRectangle(cornerRadius: 20)
                 .frame(width: 190, height: 100)
                 .foregroundColor(backgroundColor.secondary3Color)
+                .shadow(radius: 5)
             Text("\(number)")
                 //.frame(width: 200, height: 100)
                 .font(.system(size: 40, weight: .bold))

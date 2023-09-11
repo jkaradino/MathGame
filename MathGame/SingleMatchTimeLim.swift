@@ -10,8 +10,6 @@ import SwiftUI
 /// TEST PARAMETER
 let disableCounter4TestMode = false  // init false
 
-
-
 struct SingleMatchTimeLim: View {
     @StateObject private var globalVar: GlobalVariables
     init(globalVar: GlobalVariables) {
@@ -25,30 +23,11 @@ struct SingleMatchTimeLim: View {
         VStack {
             MainMathGame(difficulty: 100, showTimer: true)
                 .environmentObject(globalVar)
-                
-//            GroupBox {
-//                TimerLogic()
-//                    .environmentObject(globalVar)
-//            }
-            
-            //Text("\(globalVar.Seconds)")
         }
         if enaStopBottom == true {
             Text("\(sec)")
         }
-        //.sheet(isPresented: $maxTimeReached, content: Text("text"))
-        
-        
-//        .sheet(isPresented: $showComposeMessageView, content: {
-//            ZStack {
-//                Color.blue
-//                Text("😀")      // control + command + space
-//            }
-
-        //})
-        
-        
-        
+//            .sheet(isPresented: $maxTimeReached, content: Text("text"))
     }
 }
 

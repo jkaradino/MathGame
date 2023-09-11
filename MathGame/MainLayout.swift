@@ -9,6 +9,41 @@ import SwiftUI
 
 struct MainLayout: View {
     let backgroundColor = MainProperties.BGColors.init()
+    
+    let sRad: Double = 700
+    let radFactor = 1.01
+    
+//    init(eRad: Double?) {
+//        self.eRad = sRad
+//    }
+    
+    var body: some View {
+        
+        let eRad = sRad * radFactor
+        
+        ZStack {
+            RadialGradient(
+                gradient: Gradient(colors: [backgroundColor.primaryColor, backgroundColor.secondary2Color]),
+                center: .center,
+                startRadius: 100,
+                endRadius: 500)
+            .ignoresSafeArea()
+            
+            RadialGradient(
+                gradient: Gradient(colors: [backgroundColor.primaryColor, backgroundColor.secondary3Color]),
+                center: .bottomTrailing,
+                startRadius: sRad,
+                endRadius: eRad)
+            .ignoresSafeArea()
+            .opacity(0.3)
+            //MainMathGame()
+            //MainContent()
+        }
+    }
+}
+
+struct MainLayout1: View {
+    let backgroundColor = MainProperties.BGColors.init()
     var body: some View {
         //ZStack {
             RadialGradient(
@@ -22,6 +57,7 @@ struct MainLayout: View {
         //}
     }
 }
+
 
 struct MainLayout_Old: View {
     var body: some View {

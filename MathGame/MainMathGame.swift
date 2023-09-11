@@ -32,6 +32,7 @@ struct MainMathGame: View {
     
     @State private var score = 0
     let backgroundColor = MainProperties.BGColors.init()
+    //
     
     @EnvironmentObject var outputData: GlobalVariables
     
@@ -115,6 +116,11 @@ struct MainMathGame: View {
             } // 2nd Element (Answer Options)
             //.background(Color.blue.opacity(0.4))
             
+            let scoreValColor = [Color.red, backgroundColor.thirdColor, Color.green]
+            var scoreColor: Color = backgroundColor.thirdColor
+            
+            
+            
             HStack {
                 Text("Score: ")
                     .font(.system(size: 20))
@@ -123,9 +129,18 @@ struct MainMathGame: View {
                 Text("\(score)")
                     .font(.system(size: 27))
                     .bold()
-                    .foregroundColor(backgroundColor.thirdColor)
+                    //.foregroundColor(backgroundColor.thirdColor)
+                    .foregroundColor(scoreColor)
                     
             } // 3rd Element (Score)
+            .onAppear(perform: {
+                if score == 0 {
+                    scoreColor = Color.green
+                } else {
+                    scoreColor = Color.black
+                }
+            } // no effect
+            )
             .padding()
             if showTimer {
                 VStack {
@@ -145,7 +160,9 @@ struct MainMathGame: View {
                     }
                 } // 4th Element (Timer)
                 .sheet(isPresented: $finishedGame, content: {
-                    Text("test")
+                    Text("finished game")
+                        .onAppear(perform: delayText)
+                    
                 })
             }
         }
@@ -153,6 +170,15 @@ struct MainMathGame: View {
         
     }
     //
+    
+    @State private var hasTimeElapsed = false
+    
+    private func delayText() {
+            // Delay of 7.5 seconds
+            DispatchQueue.main.asyncAfter(deadline: .now() + 7.5) {
+                hasTimeElapsed = true
+            }
+        }
     
     func answerIsCorrect(answer: Int) {
         let isCorrect = answer == correctAnswer ? true : false

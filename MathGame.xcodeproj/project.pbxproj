@@ -33,6 +33,7 @@
 		21E28A3B2A71C5EC006FD6C0 /* MainMathGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E28A3A2A71C5EC006FD6C0 /* MainMathGame.swift */; };
 		21F1B6772AADFADF007B94F3 /* TimerNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F1B6762AADFADF007B94F3 /* TimerNew.swift */; };
 		21F1B6792AAE5A0A007B94F3 /* TimerClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F1B6782AAE5A0A007B94F3 /* TimerClass.swift */; };
+		21F1B67B2AAFB27D007B94F3 /* MentalMathBrand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F1B67A2AAFB27D007B94F3 /* MentalMathBrand.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +64,7 @@
 		21E28A3A2A71C5EC006FD6C0 /* MainMathGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMathGame.swift; sourceTree = "<group>"; };
 		21F1B6762AADFADF007B94F3 /* TimerNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerNew.swift; sourceTree = "<group>"; };
 		21F1B6782AAE5A0A007B94F3 /* TimerClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerClass.swift; sourceTree = "<group>"; };
+		21F1B67A2AAFB27D007B94F3 /* MentalMathBrand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MentalMathBrand.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 				21C5EBC32AA5246200E16B11 /* GameSettings.swift */,
 				21F1B6762AADFADF007B94F3 /* TimerNew.swift */,
 				21F1B6782AAE5A0A007B94F3 /* TimerClass.swift */,
+				21F1B67A2AAFB27D007B94F3 /* MentalMathBrand.swift */,
 			);
 			path = MathGame;
 			sourceTree = "<group>";
@@ -222,6 +225,7 @@
 				213EE1E12A560C20005F6430 /* ContentView.swift in Sources */,
 				213EE1DF2A560C20005F6430 /* MathGameApp.swift in Sources */,
 				21C5EBC42AA5246200E16B11 /* GameSettings.swift in Sources */,
+				21F1B67B2AAFB27D007B94F3 /* MentalMathBrand.swift in Sources */,
 				21E28A3B2A71C5EC006FD6C0 /* MainMathGame.swift in Sources */,
 				21CAC5012A8C148C00FD9322 /* TestForAlen.swift in Sources */,
 				213959862A576D7000C62055 /* SingleMatchNoLim.swift in Sources */,
