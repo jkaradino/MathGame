@@ -17,6 +17,7 @@ struct TestForAlen: View {
                 .foregroundColor(butText.secondaryColor)
                 .padding(1)
             Text("Pascal ist dümmer")
+                .offset(x: 100, y: 100)
         }
         
         

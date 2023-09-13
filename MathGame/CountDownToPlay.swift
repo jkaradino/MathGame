@@ -31,43 +31,6 @@ struct CountDownToPlay: View {
     
 //    @EnvironmentObject var writeData: cntExchangeVariables
     
-    func SizeOfNumber() {
-        //let maxFrameWidth: Int
-        //let maxFrameLenght: Int
-        let maxSize: Int = 100
-        let minSize: Int = 0
-        @State var enableRepeat: Bool = true
-        var numberRepeats: Int = 0
-        DynSizeOfNumber = 0.0
-        
-        if numberRepeats > 4 {
-            DynSizeOfNumber = 0.0
-            self.stopTimer()
-            enableRepeat = false
-        }
-        
-        timer = Timer.scheduledTimer(withTimeInterval: 0.001, repeats: enableRepeat) { tempTimer in
-            let factorSize: Float = 15.0
-            // Logic for timer counting up
-            if self.msec == 999 {
-                self.msec = 0
-                numberRepeats += 1
-                //DynSizeOfNumber = -1
-            } else {
-                self.msec = self.msec + 1
-                DynSizeOfNumber = Float(msec) / factorSize
-            }
-        }
-        
-        // Output
-        var dynFontSize: Int = minSize
-        
-        while (dynFontSize < maxSize) {
-            dynFontSize+=1
-            //DynSizeOfNumber = dynFontSize
-        }
-    }
-    
     var body: some View {
         VStack {
             Group {
@@ -87,11 +50,6 @@ struct CountDownToPlay: View {
             .foregroundColor(backgroundColor.secondaryColor)
         //.clipShape(Capsule())
             .padding()
-            //SizeOf
-            //Text("\(DynSizeOfNumber)")
-            //Text("\(msec)")
-            
-                
         }
         .onAppear {
             if CounterIsZero == true {
@@ -110,33 +68,73 @@ struct CountDownToPlay: View {
         }
     }
         
-        func restartTimer() {
-            seconds = 0
-            testVaer = "restartTimer func"
-            CounterIsZero = true
-        }
+    func restartTimer() {
+        seconds = 0
+        testVaer = "restartTimer func"
+        CounterIsZero = true
+    }
         
-        func startTimer() {
-            timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { tempTimer in
-                // Logic for timer counting up
-                if self.seconds == 0 {
-                    self.seconds = -1
-                    CounterIsZero = true
-                    outputData.CounterIsZero = true
-                } else {
-                    if self.seconds > -1 {
-                        self.seconds = self.seconds - 1
-                        CounterIsZero = false
-                        outputData.CounterIsZero = false
-                    }
+    func startTimer() {
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { tempTimer in
+            // Logic for timer counting up
+            if self.seconds == 0 {
+                self.seconds = -1
+                CounterIsZero = true
+                outputData.CounterIsZero = true
+            } else {
+                if self.seconds > -1 {
+                    self.seconds = self.seconds - 1
+                    CounterIsZero = false
+                    outputData.CounterIsZero = false
                 }
             }
         }
+    }
     
     func stopTimer() {
         timerIsPaused = true
         timer?.invalidate()
         timer = nil
+    }
+    
+    func SizeOfNumber() {
+        //let maxFrameWidth: Int
+        //let maxFrameLenght: Int
+//        let maxSize: Int = 100
+//        let minSize: Int = 0
+        @State var enableRepeat: Bool = true
+        var numberRepeats: Int = 0
+        DynSizeOfNumber = 0.0
+        
+        if numberRepeats > 4 {
+            DynSizeOfNumber = 0.0
+            //self.stopTimer()
+            enableRepeat = false
+        }
+        
+        timer = Timer.scheduledTimer(withTimeInterval: 0.001, repeats: enableRepeat) { tempTimer in
+            let factorSize: Float = 15.0
+            // Logic for timer counting up
+            if self.msec == 999 {
+                self.msec = 0
+                numberRepeats += 1
+                //DynSizeOfNumber = -1
+            } else {
+                self.msec = self.msec + 1
+                DynSizeOfNumber = Float(msec) / factorSize
+            }
+        }
+        
+        // OUT
+//        var dynFontSize: Int = minSize
+//
+//
+//
+//        while (dynFontSize < maxSize) {
+//            dynFontSize+=1
+//        }
+        
+        
     }
     
 }

@@ -35,6 +35,7 @@
 		21F1B6792AAE5A0A007B94F3 /* TimerClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F1B6782AAE5A0A007B94F3 /* TimerClass.swift */; };
 		21F1B67B2AAFB27D007B94F3 /* MentalMathBrand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F1B67A2AAFB27D007B94F3 /* MentalMathBrand.swift */; };
 		21F1B67D2AAFD896007B94F3 /* LoginUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F1B67C2AAFD896007B94F3 /* LoginUIView.swift */; };
+		21F1B67F2AB12A86007B94F3 /* ColorPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F1B67E2AB12A86007B94F3 /* ColorPattern.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +68,7 @@
 		21F1B6782AAE5A0A007B94F3 /* TimerClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerClass.swift; sourceTree = "<group>"; };
 		21F1B67A2AAFB27D007B94F3 /* MentalMathBrand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MentalMathBrand.swift; sourceTree = "<group>"; };
 		21F1B67C2AAFD896007B94F3 /* LoginUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUIView.swift; sourceTree = "<group>"; };
+		21F1B67E2AB12A86007B94F3 /* ColorPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPattern.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,8 @@
 				21C2EDCB2A6C00ED00762882 /* Templates */,
 				213EE1E42A560C21005F6430 /* Preview Content */,
 				21CAC5042A8CCDE400FD9322 /* MainProperties.swift */,
+				21F1B67A2AAFB27D007B94F3 /* MentalMathBrand.swift */,
+				21F1B67E2AB12A86007B94F3 /* ColorPattern.swift */,
 				21CBC7E72A8D260800A0953D /* MainLayout.swift */,
 				21C2EDD32A6C2F8300762882 /* MenuButton.swift */,
 				21A7D91E2A560F5000095E68 /* AnswerButton.swift */,
@@ -127,7 +131,6 @@
 				21C5EBC32AA5246200E16B11 /* GameSettings.swift */,
 				21F1B6762AADFADF007B94F3 /* TimerNew.swift */,
 				21F1B6782AAE5A0A007B94F3 /* TimerClass.swift */,
-				21F1B67A2AAFB27D007B94F3 /* MentalMathBrand.swift */,
 				21F1B67C2AAFD896007B94F3 /* LoginUIView.swift */,
 			);
 			path = MathGame;
@@ -225,6 +228,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21F1B67F2AB12A86007B94F3 /* ColorPattern.swift in Sources */,
 				213EE1E12A560C20005F6430 /* ContentView.swift in Sources */,
 				213EE1DF2A560C20005F6430 /* MathGameApp.swift in Sources */,
 				21C5EBC42AA5246200E16B11 /* GameSettings.swift in Sources */,
