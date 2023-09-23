@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		210138622AB9B14B002CA5DC /* FinishedGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210138612AB9B14B002CA5DC /* FinishedGame.swift */; };
 		213959862A576D7000C62055 /* SingleMatchNoLim.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213959852A576D7000C62055 /* SingleMatchNoLim.swift */; };
 		213959882A57728100C62055 /* xSingleMatchTimed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213959872A57728100C62055 /* xSingleMatchTimed.swift */; };
 		213EE1DF2A560C20005F6430 /* MathGameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213EE1DE2A560C20005F6430 /* MathGameApp.swift */; };
@@ -39,6 +40,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		210138612AB9B14B002CA5DC /* FinishedGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishedGame.swift; sourceTree = "<group>"; };
 		213959852A576D7000C62055 /* SingleMatchNoLim.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleMatchNoLim.swift; sourceTree = "<group>"; };
 		213959872A57728100C62055 /* xSingleMatchTimed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xSingleMatchTimed.swift; sourceTree = "<group>"; };
 		213EE1DB2A560C20005F6430 /* MathGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MathGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -113,6 +115,7 @@
 				21C2EDD32A6C2F8300762882 /* MenuButton.swift */,
 				21A7D91E2A560F5000095E68 /* AnswerButton.swift */,
 				21E28A3A2A71C5EC006FD6C0 /* MainMathGame.swift */,
+				210138612AB9B14B002CA5DC /* FinishedGame.swift */,
 				213959852A576D7000C62055 /* SingleMatchNoLim.swift */,
 				215791BB2A9A0189002445AC /* SingleMatchTimeLim.swift */,
 				21C2EDC92A6C005E00762882 /* StartContent.swift */,
@@ -237,6 +240,7 @@
 				21CAC5012A8C148C00FD9322 /* TestForAlen.swift in Sources */,
 				213959862A576D7000C62055 /* SingleMatchNoLim.swift in Sources */,
 				21CAC4FB2A8A280800FD9322 /* xSingleMatchTimedMain.swift in Sources */,
+				210138622AB9B14B002CA5DC /* FinishedGame.swift in Sources */,
 				21C2EDD22A6C2DC500762882 /* xSingleGameContent.swift in Sources */,
 				217087DE2A59F1710049AC3D /* TimerLogic_Base.swift in Sources */,
 				21F1B67D2AAFD896007B94F3 /* LoginUIView.swift in Sources */,

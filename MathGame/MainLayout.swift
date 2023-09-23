@@ -7,7 +7,59 @@
 
 import SwiftUI
 
+
 struct MainLayout: View {
+    var body: some View {
+        ZStack {
+            MainLayoutBG()
+            Image(systemName: "angle")
+                .position(x: 100, y: 50)
+                .frame(width: 200, height: 200)
+                .font(.system(size: 120))
+                .foregroundColor(Color(red: 0.65, green: 0.8, blue: 1))
+                .shadow(radius: 5)
+                .rotationEffect(Angle(degrees: -20))
+                
+        }
+    }
+}
+
+struct MainLayoutBG: View {
+    let backgroundColor = MainProperties.BGColors.init()
+    
+    let sRad: Double = 700
+    let radFactor = 1.01
+    
+//    init(eRad: Double?) {
+//        self.eRad = sRad
+//    }
+    
+    var body: some View {
+        
+        let eRad = sRad * radFactor
+        
+        ZStack {
+            RadialGradient(
+                gradient: Gradient(colors: [backgroundColor.primaryColor, backgroundColor.secondary2Color]),
+                center: .center,
+                startRadius: 100,
+                endRadius: 500)
+            .ignoresSafeArea()
+            
+            RadialGradient(
+                gradient: Gradient(colors: [backgroundColor.primaryColor, backgroundColor.secondary3Color]),
+                center: .bottomTrailing,
+                startRadius: sRad,
+                endRadius: eRad)
+            .ignoresSafeArea()
+            .opacity(0.3)
+            //MainMathGame()
+            //MainContent()
+        }
+    }
+}
+
+struct MainLayout2: View {
     let backgroundColor = MainProperties.BGColors.init()
     
     let sRad: Double = 700
@@ -59,46 +111,7 @@ struct MainLayout1: View {
 }
 
 
-struct MainLayout_Old: View {
-    var body: some View {
-        Color.gray
-            //.ignoresSafeArea()
-            .overlay(
-                ZStack {
-                        MainContent()
-                        .padding()
-                        Text("Test")
-                            .foregroundColor(Color.white)
-                            .font(.system(size: 100))
-                }
-            )
-    }
-}
-
-struct MainContent: View {
-    var body: some View {
-        
-        ZStack {
-            HStack {
-                VStack {
-                    Text("VStack")
-                    Text("VStack 2")
-                    Text("VStack 3")
-                }
-                Text("HStack")
-                Text("HStack 2")
-                    .font(Font.largeTitle)
-            }
-            Text("ZStack")
-                .foregroundColor(Color.red)
-                .font(.system(size: 33))
-                .frame(width: 2300, height: 2600)
-            Text("ZStack 2)")
-                .foregroundColor(Color.yellow)
-        }
-    }
-}
-
+// see ColorPatterm
 struct MainColorsOverview: View {
     var body: some View {
         let backgroundColor = MainProperties.BGColors.init()
@@ -175,6 +188,7 @@ struct MainColorsOverview: View {
       //  CGFloat red = self.btn.backgroundColor.CIColor.red;
     }
 }
+
 
 struct MainLayout_Previews: PreviewProvider {
     static var previews: some View {

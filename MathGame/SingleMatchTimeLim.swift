@@ -8,7 +8,7 @@
 import SwiftUI
 
 /// TEST PARAMETER
-let disableCounter4TestMode = false  // init false
+let disableCounter4TestMode = true  // init false
 
 struct SingleMatchTimeLim: View {
     @StateObject private var globalVar: GlobalVariables
@@ -24,9 +24,7 @@ struct SingleMatchTimeLim: View {
             MainMathGame(difficulty: 100, showTimer: true)
                 .environmentObject(globalVar)
         }
-        if enaStopBottom == true {
-            Text("\(sec)")
-        }
+
 //            .sheet(isPresented: $maxTimeReached, content: Text("text"))
     }
 }

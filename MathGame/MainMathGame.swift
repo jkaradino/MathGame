@@ -37,148 +37,122 @@ struct MainMathGame: View {
     @EnvironmentObject var outputData: GlobalVariables
     
     var body: some View {
-        VStack {
-            if timerIsCounting {
-                Button(action: {
-                    timerIsCounting.toggle()
-                }, label: {
+        ZStack {
+            VStack {
+                if timerIsCounting {
+                    Button(action: {
+                        timerIsCounting.toggle()
+                        finishedGame.toggle()
+                    }, label: {
+                        GroupBox {
+                            //Image(systemName: "stop"
+                            Text("STOP GAME")
+                                .foregroundColor(Color.red)
+                        }
+                        .padding()
+                    })
+                } else {
                     GroupBox {
-                        //Image(systemName: "stop"
-                        Text("STOP GAME")
-                            .foregroundColor(Color.red)
+                        Text("STOPPED")
+                            .foregroundColor(Color.gray)
                     }
                     .padding()
-                })
-            } else {
-                GroupBox {
-                    Text("STOPPED")
-                        .foregroundColor(Color.gray)
                 }
+                Group {
+                    VStack {
+                        HStack {
+                            Image(systemName: "function")
+                            Text("=")
+                                .italic()
+                        }
+                        Text("\(firstNumber) + \(secondNumber)")
+                            .font(.largeTitle)
+                            .bold()
+                            .foregroundColor(backgroundColor.thirdColor)
+                    }
+                } // 1st Element (GroupBox Task)
+                .frame(width: 340, height: 75)
+                .background(Color(red: 0.71, green: 0.816, blue: 0.961).opacity(0.4).gradient)
+                //.padding()
+                .border(backgroundColor.secondary2Color, width: 6)
                 .padding()
-            }
-
-            Group {
-                VStack {
-                    HStack {
-                        Image(systemName: "function")
-                        Text("=")
-                            .italic()
-                    }
-                    Text("\(firstNumber) + \(secondNumber)")
-                        .font(.largeTitle)
-                        .bold()
-                        .foregroundColor(backgroundColor.thirdColor)
-                }
-            } // 1st Element (GroupBox Task)
-            .frame(width: 340, height: 75)
-            .background(Color(red: 0.71, green: 0.816, blue: 0.961).opacity(0.4).gradient)
-            //.padding()
-            .border(backgroundColor.secondary2Color, width: 6)
-            .padding()
-            
                 
-            Group() {
-                Text("Choose the correct answer!")
-                VStack {
-                    HStack {
-                        //Spacer()
-                        ForEach(0..<2) { index in
-                            Button {
-                                answerIsCorrect(answer: choiceArray[index])
-                                generateAnswers()
-                            } label: {
-                                AnswerButton(number: choiceArray[index])
-                            }
-                            
-                        }
-                        
-                    }
-                    //.frame(width: 340, height: 120)
-                    //.background(Color.gray.opacity(0.3))
-                    //Spacer()
-                    //.padding(0.1)
-                    HStack {
-                        ForEach(2..<4) { index in
-                            Button {
-                                answerIsCorrect(answer: choiceArray[index])
-                                generateAnswers()
-                            } label: {
-                                AnswerButton(number: choiceArray[index])
+                Group() {
+                    Text("Choose the correct answer!")
+                    VStack {
+                        HStack {
+                            //Spacer()
+                            ForEach(0..<2) { index in
+                                Button {
+                                    answerIsCorrect(answer: choiceArray[index])
+                                    generateAnswers()
+                                } label: {
+                                    AnswerButton(number: choiceArray[index])
+                                }
                             }
                         }
+                        HStack {
+                            ForEach(2..<4) { index in
+                                Button {
+                                    answerIsCorrect(answer: choiceArray[index])
+                                    generateAnswers()
+                                } label: {
+                                    AnswerButton(number: choiceArray[index])
+                                }
+                            }
+                        }
+                        //.frame(width: 340, height: 120)
+                        //.background(Color.blue.opacity(0.4))
+                        //.frame(width: 340, height: 120)
                     }
-                    //.frame(width: 340, height: 120)
-                    //.background(Color.blue.opacity(0.4))
-                    //.frame(width: 340, height: 120)
-                }
-                .background(backgroundColor.thirdColor.opacity(0.07))
-    
-            } // 2nd Element (Answer Options)
-            //.background(Color.blue.opacity(0.4))
-            
-            let scoreValColor = [Color.red, backgroundColor.thirdColor, Color.green]
-            var scoreColor: Color = backgroundColor.thirdColor
-            
-            
-            
-            HStack {
-                Text("Score: ")
-                    .font(.system(size: 20))
-                    //.bold()
-                    .foregroundColor(backgroundColor.thirdColor)
-                Text("\(score)")
-                    .font(.system(size: 27))
-                    .bold()
-                    //.foregroundColor(backgroundColor.thirdColor)
-                    .foregroundColor(scoreColor)
+                    .background(backgroundColor.thirdColor.opacity(0.07))
                     
-            } // 3rd Element (Score)
-            .onAppear(perform: {
-                if score == 0 {
-                    scoreColor = Color.green
-                } else {
-                    scoreColor = Color.black
-                }
-            } // no effect
-            )
-            .padding()
-            if showTimer {
-                VStack {
-                    if timerIsCounting {
-                        TimerText(min: minutes, sec: seconds, msec: mseconds)
-                            .onAppear(perform: {
-                                self.startTimer()
-                            })
+                } // 2nd Element (Answer Options)
+                
+                ScoreText(scoreValue: score)
+                    .padding()
+                if showTimer {
+                    VStack {
+                        if timerIsCounting {
+                            TimerText(min: minutes, sec: seconds, msec: mseconds)
+                                .onAppear(perform: {
+                                    self.startTimer()
+                                    outputData.finishedGame = false
+                                })
+                        } else {
+                            //Text("\(minutes):\(seconds):\(mseconds)")
                             
-                    } else {
-                        //Text("\(minutes):\(seconds):\(mseconds)")
-                        TimerText(min: minutes, sec: seconds, msec: mseconds)
-                            .onAppear(perform: {
-                                self.stopTimer()
-                                finishedGame = true
-                            })
-                    }
-                } // 4th Element (Timer)
-                .sheet(isPresented: $finishedGame, content: {
-                    Text("finished game")
-                        .onAppear(perform: delayText)
-                    
-                })
+                            TimerText(min: minutes, sec: seconds, msec: mseconds)
+                            
+                                .onAppear(perform: {
+                                    self.stopTimer()
+                                    finishedGame = true
+                                    outputData.finishedGame = true
+                                })
+                        }
+                    } // 4th Element (Timer)
+                }
+                
+                
+            }
+            .onAppear(perform: generateAnswers)
+            
+            if finishedGame {
+                FinishedGame(min: minutes, sec: seconds, msec: mseconds, score: score)
             }
         }
-        .onAppear(perform: generateAnswers)
         
     }
     //
-    
-    @State private var hasTimeElapsed = false
-    
-    private func delayText() {
-            // Delay of 7.5 seconds
-            DispatchQueue.main.asyncAfter(deadline: .now() + 7.5) {
-                hasTimeElapsed = true
-            }
-        }
+    // test
+//    @State private var hasTimeElapsed = false
+//
+//    private func delayText() {
+//            // Delay of 7.5 seconds
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+//                hasTimeElapsed = true
+//            }
+//        }
     
     func answerIsCorrect(answer: Int) {
         let isCorrect = answer == correctAnswer ? true : false
@@ -239,6 +213,36 @@ struct MainMathGame: View {
     }
 }
 
+struct ScoreText: View {
+    var scoreValue: Int
+    
+    var body: some View {
+        let backgroundColor = MainProperties.BGColors.init()
+        var scoreColor = backgroundColor.thirdColor
+        
+        HStack {
+            Text("Score: ")
+                .font(.system(size: 20))
+            //.bold()
+                .foregroundColor(backgroundColor.thirdColor)
+            Text("\(scoreValue)")
+                .font(.system(size: 27))
+                .bold()
+            //.foregroundColor(backgroundColor.thirdColor)
+                .foregroundColor(scoreColor)
+            
+        } // 3rd Element (Score)
+        
+//        if scoreValue == 0 {
+//            scoreColor = Color.green
+//        } else {
+//            scoreColor = Color.black
+//        }
+        
+    }
+    
+}
+
 struct TimerText: View {
     var min: Int
     var sec: Int
@@ -269,12 +273,13 @@ struct MainMathGame_Previews: PreviewProvider {
         
         ZStack {
             MainLayout()
-            MainMathGame()
-            //SingleMatchNoLim()
-                .environmentObject(GlobalVariables())
-            //.toolbar(.hidden, for: .navigationBar)
-            
-            
+                
+            VStack {
+                //MentalMathBrand()
+                MainMathGame()
+                //SingleMatchNoLim()
+                    .environmentObject(GlobalVariables())
+            }
         }
     }
 }

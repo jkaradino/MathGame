@@ -71,6 +71,72 @@ struct MentalMathBrand: View {
     }
 }
 
+struct MentalMathBrandVarSize: View {
+    
+    // func
+    
+    var squareSize: CGFloat
+    
+    var body: some View {
+        let backgroundColor = MainProperties.BGColors.init()
+        
+        let firstColor = backgroundColor.thirdColor
+        let secondColor = backgroundColor.secondaryColor
+        let thirdColor = backgroundColor.secondary2Color
+        let fourthColor = backgroundColor.secondary3Color
+        let shadowRadius: CGFloat = 7
+        
+        let firstSquare = Rectangle().fill(firstColor).frame(width: squareSize, height: squareSize).cornerRadius(15).shadow(radius: shadowRadius)
+        let secondSquare = Rectangle().fill(secondColor).frame(width: squareSize, height: squareSize).cornerRadius(15).shadow(radius: shadowRadius)
+        let thirdSquare = Rectangle().fill(thirdColor).frame(width: squareSize, height: squareSize).cornerRadius(15).shadow(radius: shadowRadius)
+        let fourthSquare = Rectangle().fill(fourthColor).frame(width: squareSize, height: squareSize).cornerRadius(15).shadow(radius: shadowRadius)
+        
+        let spacingStacks: CGFloat = squareSize/40
+        
+
+        
+        
+        
+        HStack(alignment: .center, spacing: spacingStacks) {
+            VStack(alignment: .center, spacing: spacingStacks) {
+                ZStack {
+                    firstSquare
+                    Text("M")
+                        .frame(width: squareSize, height: squareSize)
+                        .font(.custom("American Typewriter", size: squareSize/2.8))
+                        .foregroundColor(Color(red: 0.65, green: 0.8, blue: 1))
+                }
+                ZStack {
+                    fourthSquare
+                    Text("M")
+                        .frame(width: squareSize, height: squareSize)
+                        .font(.custom("American Typewriter", size: squareSize/2))
+                        .foregroundColor(Color(red: 0.15, green: 0.3, blue: 0.5))
+                }
+            }
+            
+            VStack(alignment: .center, spacing: spacingStacks) {
+                ZStack {
+                    thirdSquare
+                    Text("ental")
+                        .frame(width: squareSize, height: squareSize)
+                        .font(.custom("American Typewriter", size: squareSize/2.8))
+                        .foregroundColor(backgroundColor.thirdColor)
+                }
+                ZStack {
+                    secondSquare
+                    Text("ath")
+                        .frame(width: squareSize, height: squareSize)
+                        .font(.custom("American Typewriter", size: squareSize/2.8))
+                        .foregroundColor(Color(red: 0.8, green: 0.85, blue: 0.92))
+                }
+            }
+            
+        }
+        
+    }
+}
+
 struct MentalMathBrandImage: View {
     var body: some View {
         let backgroundColor = MainProperties.BGColors.init()
@@ -257,10 +323,7 @@ struct MentalMathBrandRotate: View {
                 DynSizeOfNumber = Float(msec) / factorSize
             }
         }
-
-
     }
-
 }
 
 struct MentalMathBrandImageRotate: View {
@@ -433,6 +496,8 @@ struct MentalMathBrandImageGradient: View {
 }
 
 
+
+
 //func createTimer(startTimer: Bool) {
 //    @State var timer: Timer? = nil
 //    @State var DynSizeOfNumber: Float = 0.0
@@ -482,17 +547,29 @@ struct MentalMathBrandImageGradient: View {
 
 struct BrandCaller: View {
     var body: some View {
+        let NumCase: Int = 5
         VStack {
-            //MentalMathBrand()
-            //MentalMathBrandRotate()
-            //MentalMathBrandImage()
-            MentalMathBrandImageGradient()
+            switch NumCase {
+            case 1:
+                MentalMathBrand()
+            case 2:
+                MentalMathBrandRotate()
+            case 3:
+                MentalMathBrandImage()
+            case 4:
+                MentalMathBrandImageGradient()
+            case 5:
+                MentalMathBrandVarSize(squareSize: 200)
+            default:
+                MentalMathBrand()
+            }
         }
     }
 }
 
 struct MentalMathBrand_Previews: PreviewProvider {
     static var previews: some View {
+        //MentalMathBrandVarSize(squareSize: 100)
         BrandCaller()
     }
 }

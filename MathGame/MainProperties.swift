@@ -12,6 +12,14 @@ import SwiftUI
 struct MainProperties
 {
     struct BGColors {
+        let White = Color.white
+        let GrayBlue = Color("GrayBlue")
+        let BrightBlue = Color("BrightBlue")
+        let StandardBlue = Color("StandardBlue")
+        let DarkBlue = Color("DarkBlue")
+        let MetallicDarkBlue = Color("MetallicDarkBlue")
+        
+        // old apporach. Dont delete for old code which is not replaced yet but dont use it anymore
         let primaryColor = Color.white
         let secondaryColor = Color.cyan
         let secondary2Color = Color(red: 0.65, green: 0.8, blue: 1)
@@ -40,5 +48,8 @@ class GlobalVariables: ObservableObject {
     // TimerLogic()
     @Published var Seconds = 0
     @Published var Minutes = 0
+    @Published var MSeconds = 0
     
+    @Published var finishedGame = false
+    @Published var finishedGameConfirmed = false
 }

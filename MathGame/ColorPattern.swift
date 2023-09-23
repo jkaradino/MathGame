@@ -11,23 +11,6 @@ struct ColorPattern: View {
     var body: some View {
         let backgroundColor = MainProperties.BGColors.init()
         VStack {
-            
-            Group {
-                //Color.red
-                ZStack {
-                    backgroundColor.primaryColor
-                    Text("Primary Color")
-                }
-            }
-            Group {
-                //Color.red
-                ZStack {
-                    Color(red: 0.8, green: 0.85, blue: 0.92)
-                    Text("Primary Color")
-                }
-            }
-            
-            
             Group {
                 //Color.red
                 ZStack {
@@ -36,71 +19,82 @@ struct ColorPattern: View {
                     Color.cyan
                     Text("Secondary Color")
                 }
-            }
+            } // secondary
+            
             Group {
-                //Color.red
                 ZStack {
                     backgroundColor.secondaryColor
                         .brightness(0.15)
                     Text("Secondary Bright Color")
                 }
-            }
+            } // secondary bright
+            
             Group {
-                //Color.red
                 ZStack {
-                    
-                    Color(red: 0.65, green: 0.8, blue: 1)
+                    backgroundColor.White
+                    Text("White")
+                } // white
+                .frame(width: 200, height: 70)
+            } // white
+            
+            Group {
+                ZStack {
+                    //Color(red: 0.8, green: 0.85, blue: 0.92)
+                    //Color("GrayBlue")
+                    backgroundColor.GrayBlue
+                    Text("GrayBlue").bold()
+                }
+            } // gray blue
+            
+            Group {
+                ZStack {
+                    //Color(red: 0.65, green: 0.8, blue: 1)
+                    //Color("BrightBlue")
+                    backgroundColor.BrightBlue
                     VStack {
-                        Text("Secondary 2 Color")
+                        Text("BrightBlue").bold()
                         Text("Color(red: 0.65, green: 0.8, blue: 1)")}
                 }
-            }
-            
-            
+            } // standard blue
             
             Group {
-                //Color.red
                 ZStack {
-                    Color(red: 0.45, green: 0.7, blue: 1)
+                    //Color(red: 0.45, green: 0.7, blue: 1)
+                    //Color("StandardBlue")
+                    backgroundColor.StandardBlue
                     VStack {
-                        Text("Secondary 3 Color")
+                        Text("StandardBlue").bold()
                         Text("Text(Color(red: 0.45, green: 0.7, blue: 1))}")}
                 }
-            }
+            } // standard blue
+            
             Group {
-                //Color.red
                 ZStack {
+                    Color("MetallicDarkBlue")
                     //Color(red: 0.31, green: 0.416, blue: 0.561)
-                    backgroundColor.thirdColor
-                    Color(red: 0.31, green: 0.416, blue: 0.561)
+                    backgroundColor.MetallicDarkBlue
+                    
                     VStack {
-                        Text("Third Color")
+                        Text("MetallicDarkBlue").bold()
                         .foregroundColor(Color.white)
                         Text("Color(red: 0.31, green: 0.416, blue: 0.561)")
                             .foregroundColor(Color.white)
-                    }
+                    } // Text
                 }
-            }
+            } // metallic dark blue
+            
             Group {
-                //Color.red
                 ZStack {
-                    Color(red: 0.15, green: 0.3, blue: 0.5)
+                    //Color(red: 0.15, green: 0.3, blue: 0.5)
+                    //Color("DarkBlue")
+                    backgroundColor.DarkBlue
                     VStack {
-                        Text("Secondary 2 Color")
+                        Text("DarkBlue").bold()
                         Text("Color(red: 0.65, green: 0.8, blue: 1)")}
                     .foregroundColor(.white)
                 }
-            }
+            } // dark blue
             
-            
-            
-            //Color(red: 0.65, green: 0.65, blue: 1)
-            //backgroundColor.secondaryColor
-                //.brightness(0.15)
-             //   .contrast(1.1)
-            //backgroundColor.thirdColor
-            
-            //CGColor(red: 78, green: 107, blue: 143, alpha: 1)
             //Color.indigo
         }
         
