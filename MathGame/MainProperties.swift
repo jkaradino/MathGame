@@ -27,7 +27,7 @@ struct MainProperties
         let thirdColor = Color(red: 0.31, green: 0.416, blue: 0.561) //Color.indigo
     }
     struct HeadlineNames {
-        let mainTitle = "Mental Math - Choose your game!"
+        let mainTitle = "Choose your game!"
     }
 }
 

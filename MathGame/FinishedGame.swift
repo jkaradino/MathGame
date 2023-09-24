@@ -156,9 +156,10 @@ struct FinishedGame: View {
                     } // Back Button Group
                     //.position(y: 100)
                     
+                    
                 }
                 .onAppear(perform: {
-                    Timer.scheduledTimer(withTimeInterval: 3, repeats: false) { (_) in
+                    Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false) { (_) in
                         isHidden = false
                     }
                 })
@@ -173,20 +174,21 @@ struct FinishedGame: View {
                         .padding(0.0001)
                     //.offset(y: -100)
                     Text("\(subText)")
-                        .padding()
+                        //.padding()
+                        
+                    Image(systemName: "medal")
+                        .scaleEffect(4)
+                        .foregroundColor(Color(red: 1, green: 0.68, blue: 0.267))
+                        .offset(y: 50)
                     
-                    NavigationLink(destination:
-                                    StartContent()
-                                    .navigationBarBackButtonHidden()
-                            ) {
-                           // Text("Test")
-                                //.toolbar(.hidden, for: .tabBar)
-                        
-                        
-                    }
+                    Text("New medal achieved!")
+                        .offset(y: 100)
                     
                 } // Text Group
                 .offset(y: 100)
+                
+                
+                Spacer()
                 
                 Group {
                     VStack {
@@ -196,7 +198,9 @@ struct FinishedGame: View {
                     }
                 } // Score Group
                 .fixedSize(horizontal: true, vertical: false)
-                .offset(y: 384)
+                //.offset(y: 384)
+                //.position(x: 100, y: 500)
+                .offset(y: -74)
                 .onAppear(perform: {
                     
                     Timer.scheduledTimer(withTimeInterval: 2.5, repeats: false) { (_) in
@@ -205,12 +209,11 @@ struct FinishedGame: View {
                         sub = CGFloat(ina)
                         
                         //sub = CGFloat(i)
-                        
                     }
-                    
-                })
+                }) // currently no impact
+                //.position(x: 0, y: 0)
                 
-                Spacer()
+                //Spacer()
             }
             
             if backToStart {

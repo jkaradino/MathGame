@@ -9,9 +9,10 @@ import SwiftUI
 
 struct MenuButton: View {
     var buttonText: String
-    var ButtonSize: Float = 30
-    var buttinWidth: CGFloat = 350
-    var buttonHeight: CGFloat = 300
+    var buttonDescription: String
+    var TextSize: Float = 30
+    var buttinWidth: CGFloat
+    var buttonHeight: CGFloat
     let backgroundColor = MainProperties.BGColors.init()
     //lazy var primaryBGColor = backgroundColor.primaryColor
     
@@ -19,15 +20,25 @@ struct MenuButton: View {
         ZStack {
             RoundedRectangle(cornerRadius: 20)
                 .frame(width: buttinWidth, height: buttonHeight)
-                .foregroundColor(backgroundColor.MetallicDarkBlue)
+                .foregroundColor(backgroundColor.DarkBlue)
                 .shadow(radius: 8)
-            Text("\(buttonText)")
-                
+                .opacity(0.9)
+            
+            VStack {
+                Text("\(buttonText)")
                 //.background(backgroundColor.MetallicDarkBlue.gradient)
-                .font(.system(size: CGFloat(ButtonSize), weight: .bold))
-                .foregroundColor(backgroundColor.GrayBlue)
+                    //.font(.system(size: CGFloat(TextSize), weight: .bold))
+                    .font(.custom("American Typewriter", size: CGFloat(TextSize)))
+                    .bold()
+                    .foregroundColor(backgroundColor.GrayBlue)
+                    .padding(0.1)
+                Text("\(buttonDescription)")
+                    .italic()
+                    .foregroundColor(backgroundColor.BrightBlue)
                 
-            //.clipShape()
+            }
+            .frame(width: buttinWidth, height: buttonHeight)
+            
         }
     }
 }
@@ -45,12 +56,13 @@ struct MenuButtonOld: View {
             .font(.system(size: CGFloat(ButtonSize), weight: .bold))
             .foregroundColor(backgroundColor.primaryColor)
             .shadow(radius: 8)
+            .opacity(0.8)
             //.clipShape()
     }
 }
 
 struct MenuButton_Previews: PreviewProvider {
     static var previews: some View {
-        MenuButton(buttonText: "Template")
+        MenuButton(buttonText: "Template", buttonDescription: "Write a description.", buttinWidth: 350, buttonHeight: 300)
     }
 }

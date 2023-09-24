@@ -35,7 +35,6 @@ struct CountDownToPlay: View {
         VStack {
             Group {
                 if seconds == 0 {
-                    
                     Text("GO")
                 } else {
                     if seconds > 0 {
@@ -44,7 +43,9 @@ struct CountDownToPlay: View {
                 }
             }
             .frame(width: 110, height: 110)
-            .font(.system(size: CGFloat(DynSizeOfNumber), weight: .bold))
+            //.font(.system(size: CGFloat(DynSizeOfNumber), weight: .bold))
+            .font(.custom("American Typewriter", size: CGFloat(DynSizeOfNumber)))
+            .bold()
         //.background(backgroundColor.secondaryColor)
             .scaleEffect(4)
             .foregroundColor(backgroundColor.secondaryColor)
@@ -113,7 +114,7 @@ struct CountDownToPlay: View {
         }
         
         timer = Timer.scheduledTimer(withTimeInterval: 0.001, repeats: enableRepeat) { tempTimer in
-            let factorSize: Float = 15.0
+            let factorSize: Float = 20.0
             // Logic for timer counting up
             if self.msec == 999 {
                 self.msec = 0

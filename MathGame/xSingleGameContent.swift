@@ -14,7 +14,7 @@ struct xSingleGameContent: View {
         Button {
             // action
         } label: {
-            MenuButton(buttonText: "test")
+            MenuButton(buttonText: "test", buttonDescription: "textbla", buttinWidth: 350, buttonHeight: 300)
         }
         
         

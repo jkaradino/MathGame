@@ -8,7 +8,7 @@
 import SwiftUI
 
 /// TEST PARAMETER
-let disableCounter4TestMode = true  // init false
+let disableCounter4TestMode = false  // init false
 
 struct SingleMatchTimeLim: View {
     @StateObject private var globalVar: GlobalVariables

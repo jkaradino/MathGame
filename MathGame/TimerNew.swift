@@ -31,7 +31,7 @@ struct TimerNew: View {
         Text("\(minutes):\(seconds):\(mseconds)")
     }
     func createTimer() {
-        timerIsPaused = false
+        //timerIsPaused = false
         timer = Timer.scheduledTimer(withTimeInterval: 0.001, repeats: true) { tempTimer in
             // Logic for timer counting up
             if self.mseconds == 999 {

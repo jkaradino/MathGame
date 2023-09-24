@@ -34,7 +34,7 @@ class ViewController: UIViewController {
         var minutes: Int = 0
         var timer: Timer?
         
-        timerIsPaused = false
+        //timerIsPaused = false
         timer = Timer.scheduledTimer(withTimeInterval: 0.001, repeats: true) { tempTimer in
             // Logic for timer counting up
             if mseconds == 999 {
