@@ -50,155 +50,350 @@ struct MainLayout: View {
 struct MainLayoutFibanocci: View {
     let backgroundColor = MainProperties.BGColors.init()
     
-    let sRad: Double = 700
-    let radFactor = 1.01
-    
-//    init(eRad: Double?) {
-//        self.eRad = sRad
-//    }
     
     // Frame size
     let widthLayout: CGFloat = 393
-    let heightLayout: CGFloat = 700
+    let heightLayout: CGFloat = 700 // not to be used
     
     // Fibanocci size
     let widthFibanocci: CGFloat = 21
     let heightFibanocci: CGFloat = 34
     
+    let squareBorderSize: CGFloat = 0
+    
     var body: some View {
-
-        
 //        let sumFibanocciSize: CGFloat = widthFibanocci + heightFibanocci
         
-        let firstSquareSize: CGFloat = widthLayout
         let heightLayoutNew: CGFloat = 34/21 * widthLayout
-        
         let sumLayoutSize: CGFloat = widthLayout + heightLayoutNew
         
-        let firstYOffset = -heightLayoutNew/2+widthLayout/2
+        // Squares
+        let firstSquareSize: CGFloat = widthLayout
+        let firstSquareXOffset: CGFloat = 0
+        let firstSquareYOffset = -heightLayoutNew/2+widthLayout/2
         
-        //let secondSquareSize: CGFloat = heightLayoutNew - widthLayout
         let secondSquareSize: CGFloat = 13/21*widthLayout
-        // 13/21*400
-        let secondYOffset = heightLayoutNew/2 - (heightLayoutNew-widthLayout)/2
+        let secondSquareXOffset: CGFloat = -75
+        let secondSquareYOffset = heightLayoutNew/2 - (heightLayoutNew-widthLayout)/2
         
-        //let thirdSquareSize: CGFloat = heightLayoutNew - widthLayout - 100
-        let thirdSquareSize: CGFloat = 8/21*widthLayout+1
-        let thirdYOffset = heightLayoutNew/2 - (heightLayoutNew-widthLayout)/2
+        let thirdSquareSize: CGFloat = 8/21*widthLayout+0.5
+        let thirdSquareXOffset: CGFloat = 122-0.3
+        let thirdSquareYOffset = heightLayoutNew/2 - (heightLayoutNew-widthLayout)/2 + 46.4
         
-        let fourthSquareSize: CGFloat = 5/21*widthLayout+1
-        let fourthYOffset = thirdYOffset - (heightLayoutNew-widthLayout)/2
+        let fourthSquareSize: CGFloat = 5/21*widthLayout - 0.2
+        let fourthSquareXOffset: CGFloat = 122+27.7
+        let fourthSquareYOffset = heightLayoutNew/2 - (heightLayoutNew-widthLayout)/2 - (heightLayoutNew-widthLayout)/2 + 46.5
         
-        let fifthSquareSize: CGFloat = 3/21*widthLayout+1
-        let fifthYOffset = thirdYOffset - (heightLayoutNew-widthLayout)/2 + 64
+        let fifthSquareSize: CGFloat = 3/21*widthLayout + 0.3
+        let fifthSquareXOffset: CGFloat = 74.6 + 0.2
+        let fifthSquareYOffset = heightLayoutNew/2 - (heightLayoutNew-widthLayout)/2 - (heightLayoutNew-widthLayout)/2 + 28.1
+        
+        let sixthSquareSize: CGFloat = 2/21*widthLayout-0.7
+        let sixthSquareXOffset: CGFloat = 74.6 - 9.6
+        let sixthSquareYOffset = heightLayoutNew/2 - (heightLayoutNew-widthLayout)/2 - 46.9
+        
+        let lastASquareSize: CGFloat = 1/21*widthLayout + 0.63
+        let lastASquareXOffset: CGFloat = 93.33
+        let lastASquareYOffset = heightLayoutNew/2 - (heightLayoutNew-widthLayout)/2 - 38.17
+        
+        let lastBSquareSize: CGFloat = 1/21*widthLayout + 0.63
+        let lastBSquareXOffset: CGFloat = 93.33
+        let lastBSquareYOffset = heightLayoutNew/2 - (heightLayoutNew-widthLayout)/2 - 55.8
+        
+        
+        
+        // Circles
+        let firstCircleSize: CGFloat = widthLayout*2
+        let firstCircleYOffset: CGFloat = firstCircleSize/4
+        let firstCircleXOffset: CGFloat = firstCircleSize/4
+        
+        let secondCircleSize: CGFloat = secondSquareSize * 2
+        let secondCircleYOffset: CGFloat = secondCircleSize/4
+        let secondCircleXOffset: CGFloat = secondCircleSize/4
+        
+        let thirdCircleSize: CGFloat = thirdSquareSize * 2
+        let thirdCircleYOffset: CGFloat = thirdCircleSize/4
+        let thirdCircleXOffset: CGFloat = thirdCircleSize/4
+        
+        let fourthCircleSize: CGFloat = fourthSquareSize * 2
+        let fourthCircleYOffset: CGFloat = fourthCircleSize/4
+        let fourthCircleXOffset: CGFloat = fourthCircleSize/4
+        
+        let fifthCircleSize: CGFloat = fifthSquareSize * 2
+        let fifthCircleYOffset: CGFloat = fifthCircleSize/4
+        let fifthCircleXOffset: CGFloat = fifthCircleSize/4
+        
+        let sixthCircleSize: CGFloat = sixthSquareSize * 2
+        let sixthCircleYOffset: CGFloat = sixthCircleSize/4
+        let sixthCircleXOffset: CGFloat = sixthCircleSize/4
+        
+        let lastCircleSize: CGFloat = lastASquareSize * 2
+        let lastCircleYOffset: CGFloat = lastCircleSize/4
+        let lastCircleXOffset: CGFloat = lastCircleSize/4
 
         ZStack {
             Color.red
+                .frame(width: widthLayout, height: heightLayoutNew)
+    
+            
+            ZStack {
+                Group {
+                    
+                    Rectangle()
+                        .fill(backgroundColor.StandardBlue.gradient)
+                        .frame(width: firstSquareSize, height: firstSquareSize)
+                        .border(Color.blue, width: squareBorderSize)
+                    
+                    Circle()
+                        .trim(from: 0.5, to: 1)
+                        .fill(Color.blue)
+                        .frame(width: firstCircleSize, height: firstCircleSize)
+                    //.border(Color.red, width: 5)
+                        .offset(x: firstCircleXOffset, y: firstCircleYOffset)
+                    
+                    Circle()
+                        .trim(from: 0.5, to: 1)
+                        .fill(backgroundColor.BrightBlue)
+                        .frame(width: firstCircleSize-10, height: firstCircleSize-10)
+                    //.border(Color.red, width: 5)
+                        .offset(x: firstCircleXOffset, y: firstCircleYOffset)
+                    
+//                    Text("First Rectangle\nr: \(Int(firstSquareSize))\nrFib: 21\nOffset: x: \(Int(firstSquareXOffset)) y: \(Int(firstSquareYOffset))")
+//                        .font(.system(size: 20))
+                    
+                }
+                .offset(x: firstSquareXOffset, y: firstSquareYOffset)
+                //.trim(from: 0.5, to: 1)
+            }  // First square
+            .frame(width: firstSquareSize, height: firstSquareSize)
+            //.trim(from: 0.5, to: 1)
             
             ZStack {
                 Group {
                     Rectangle()
-                        .fill(backgroundColor.StandardBlue)
-                        .border(Color.blue, width: 5)
-                        .frame(width: firstSquareSize, height: firstSquareSize)
-                    Text("First Rectangle\n400x400\n21x21\nOffset: y: \(Int(firstYOffset))")
-                        .font(.system(size: 40))
+                        .fill(backgroundColor.BrightBlue.gradient)
+                        .border(Color.blue, width: squareBorderSize)
+                        .frame(width: secondSquareSize, height: secondSquareSize)
+                    
+                    Circle()
+                        .trim(from: 0.5, to: 0.753)
+                        .fill(Color.blue)
+                        .frame(width: secondCircleSize, height: secondCircleSize)
+                    //.border(Color.red, width: 5)
+                        .offset(x: secondCircleXOffset, y: secondCircleYOffset)
+                        .rotationEffect(.degrees(270))
+                    
+                    Circle()
+                        .trim(from: 0.5, to: 0.75)
+                        .fill(backgroundColor.BrightBlue)
+                        .frame(width: secondCircleSize-10, height: secondCircleSize-10)
+                    //.border(Color.red, width: 5)
+                        .offset(x: secondCircleXOffset, y: secondCircleYOffset)
+                        .rotationEffect(.degrees(270))
+                    
+//                    Text("Second Rectangle\nr: \(Int(secondSquareSize))\nrFib: 13\nOffset: x: \(Int(secondSquareXOffset)) y: \(Int(secondSquareYOffset))")
+//                        .font(.system(size: 20))
+                        
                 }
-                //.position(x:0, y: 0)
-                //.offset(y: -350+200)
-                    .offset(y: firstYOffset)
-                //.position(x: 0, y: 0)
-            }
+                .offset(x: secondSquareXOffset, y: secondSquareYOffset)
+            } // Second square
+            .frame(width: secondSquareSize, height: secondSquareSize)
+            
+            ZStack {
+                Group {
+                    Rectangle()
+                        .fill(backgroundColor.BrightBlue.gradient)
+                        .border(Color.blue, width: squareBorderSize)
+                        .frame(width: thirdSquareSize, height: thirdSquareSize)
+                    
+//                    Text("Third Rectangle\nr: \(Int(thirdSquareSize))\nrFib: 8\nOffset: x: \(Int(thirdSquareXOffset)) y: \(Int(thirdSquareYOffset))")
+//                        .font(.system(size: 15))
+                    
+                    Circle()
+                        .trim(from: 0.5, to: 0.76)
+                        .fill(Color.blue)
+                        .frame(width: thirdCircleSize, height: thirdCircleSize)
+                    //.border(Color.red, width: 5)
+                        .offset(x: thirdCircleXOffset, y: thirdCircleYOffset)
+                        .rotationEffect(.degrees(180))
+                    
+                    Circle()
+                        //.trim(from: 0.5, to: 0.75)
+                        .fill(backgroundColor.BrightBlue)
+                        .frame(width: thirdCircleSize-10, height: thirdCircleSize-10)
+                    //.border(Color.red, width: 5)
+                        .offset(x: thirdCircleXOffset, y: thirdCircleYOffset)
+                        .rotationEffect(.degrees(180))
+                    
+                    
+                }
+                .offset(x: thirdSquareXOffset, y: thirdSquareYOffset)
+            } // Third square
+            
+            ZStack {
+                Group {
+                    Rectangle()
+                        .fill(backgroundColor.BrightBlue.gradient)
+                        .border(Color.blue, width: squareBorderSize)
+                        .frame(width: fourthSquareSize, height: fourthSquareSize)
+                    
+//                    Text("Fourth Rectangle\nr: \(Int(fourthSquareSize))\nrFib: 5\nOffset: x: \(Int(fourthSquareXOffset)) y: \(Int(fourthSquareYOffset))")
+//                        .font(.system(size: 9))
+                    
+                    Circle()
+                        .trim(from: 0.4, to: 0.76)
+                        .fill(Color.blue)
+                        .frame(width: fourthCircleSize, height: fourthCircleSize)
+                    //.border(Color.red, width: 5)
+                        .offset(x: fourthCircleXOffset, y: fourthCircleYOffset)
+                        .rotationEffect(.degrees(90))
+                    
+                    Circle()
+                        //.trim(from: 0.5, to: 0.75)
+                        .fill(backgroundColor.BrightBlue)
+                        .frame(width: fourthCircleSize-10, height: fourthCircleSize-10)
+                    //.border(Color.red, width: 5)
+                        .offset(x: fourthCircleXOffset, y: fourthCircleYOffset)
+                        .rotationEffect(.degrees(90))
+                    
+                }
+                .offset(x: fourthSquareXOffset, y: fourthSquareYOffset)
+            } // Fourth square
             
             ZStack {
                 Group {
                     Rectangle()
                         .fill(backgroundColor.BrightBlue)
-                        .border(Color.blue, width: 5)
-                        .frame(width: secondSquareSize, height: secondSquareSize)
-                    //.position(x:0, y: 0)
-                    //.offset(y: -350+200)
-                    //.offset(y: -heightLayout/2+widthLayout/2)
-                    //.offset(y: 200)
-                    //.position(x: 0, y: 0)
-                    Text("Second Rectangle\n300x300\n13x13\nOffset: y: \(Int(secondYOffset))")
-                        .font(.system(size: 30))
-                }
-                .offset(x: -75, y: secondYOffset)
-            }
-            
-            
-            ZStack {
-                Group {
-                    Rectangle()
-                        .fill(backgroundColor.MetallicDarkBlue)
-                        .border(Color.blue, width: 5)
-                        .frame(width: thirdSquareSize, height: thirdSquareSize)
-                    //.position(x:0, y: 0)
-                    //.offset(y: -350+200)
-                    //.offset(y: -heightLayout/2+widthLayout/2)
-                    //.offset(y: 200)
-                    //.position(x: 0, y: 0)
-                    Text("Third Rectangle\n300x300\n13x13\nOffset: y: \(Int(thirdYOffset))")
-                        .font(.system(size: 15))
-                }
-                .offset(x: 122, y: thirdYOffset+46)
-            }
-            
-            ZStack {
-                Group {
-                    Rectangle()
-                        .fill(backgroundColor.GrayBlue)
-                        .border(Color.blue, width: 5)
-                        .frame(width: fourthSquareSize, height: fourthSquareSize)
-                    //.position(x:0, y: 0)
-                    //.offset(y: -350+200)
-                    //.offset(y: -heightLayout/2+widthLayout/2)
-                    //.offset(y: 200)
-                    //.position(x: 0, y: 0)
-                    Text("Third Rectangle\n300x300\n13x13\nOffset: y: \(Int(thirdYOffset))")
-                        .font(.system(size: 10))
-                }
-                .offset(x: 122+27, y: fourthYOffset+46)
-            }
-            
-            ZStack {
-                Group {
-                    Rectangle()
-                        .fill(backgroundColor.DarkBlue)
-                        .border(Color.blue, width: 5)
+                        .border(Color.blue, width: squareBorderSize)
                         .frame(width: fifthSquareSize, height: fifthSquareSize)
-                    //.position(x:0, y: 0)
-                    //.offset(y: -350+200)
-                    //.offset(y: -heightLayout/2+widthLayout/2)
-                    //.offset(y: 200)
-                    //.position(x: 0, y: 0)
-                    Text("Fifth Rectangle\n300x300\n13x13\nOffset: y: \(Int(fifthYOffset))")
-                        .font(.system(size: 6))
+  
+//                    Text("Fifth Rectangle\nr: \(Int(fifthSquareSize))\nrFib: 3\nOffset: x: \(Int(fifthSquareXOffset)) y: \(Int(fifthSquareYOffset))")
+//                        .font(.system(size: 5))
+                    
+                    Circle()
+                        .trim(from: 0.4, to: 0.76)
+                        .fill(Color.blue)
+                        .frame(width: fifthCircleSize, height: fifthCircleSize)
+                    //.border(Color.red, width: 5)
+                        .offset(x: fifthCircleXOffset, y: fifthCircleYOffset)
+                        .rotationEffect(.degrees(0))
+                    
+                    Circle()
+                        //.trim(from: 0.5, to: 0.75)
+                        .fill(backgroundColor.BrightBlue)
+                        .frame(width: fifthCircleSize-10, height: fifthCircleSize-10)
+                    //.border(Color.red, width: 5)
+                        .offset(x: fifthCircleXOffset, y: fifthCircleYOffset)
+                        .rotationEffect(.degrees(0))
+                    
                 }
-                .offset(x: 75, y: fifthYOffset)
-            }
+                .offset(x: fifthSquareXOffset, y: fifthSquareYOffset)
+            } // Fifth square
             
-            
-            
-            Circle().fill(Color.blue).frame(width: 220, height: 220)
-                .position(x:200 , y: 0)
-            
-            
-            Circle().fill(Color.green).frame(width: 120, height: 120)
-                //.position(x:0, y: 0)
-            
+            ZStack {
+                Group {
+                    Rectangle()
+                        .fill(backgroundColor.BrightBlue)
+                        .border(Color.blue, width: squareBorderSize)
+                        .frame(width: sixthSquareSize, height: sixthSquareSize)
+  
+//                    Text("Sixth Rectangle\nr: \(Int(sixthSquareSize))\nrFib: 2\nOffset: x: \(Int(sixthSquareXOffset)) y: \(Int(sixthSquareYOffset))")
+//                        .font(.system(size: 3.5))
+                    
+                    Circle()
+                        .trim(from: 0.4, to: 0.76)
+                        .fill(Color.blue)
+                        .frame(width: sixthCircleSize, height: sixthCircleSize)
+                    //.border(Color.red, width: 5)
+                        .offset(x: sixthCircleXOffset, y: sixthCircleYOffset)
+                        .rotationEffect(.degrees(270))
+                    
+                    Circle()
+                        //.trim(from: 0.5, to: 0.75)
+                        .fill(backgroundColor.BrightBlue)
+                        .frame(width: sixthCircleSize-10, height: sixthCircleSize-10)
+                    //.border(Color.red, width: 5)
+                        .offset(x: sixthCircleXOffset, y: sixthCircleYOffset)
+                        .rotationEffect(.degrees(270))
 
+                    
+                }
+                .offset(x: sixthSquareXOffset, y: sixthSquareYOffset)
+            } // Sixth square
             
-            Text("13/21: \n \(0.619)")
+            ZStack {
+                Group {
+                    Rectangle()
+                        .fill(backgroundColor.BrightBlue)
+                        .border(Color.blue, width: squareBorderSize)
+                        .frame(width: lastASquareSize, height: lastASquareSize)
+  
+//                    Text("r: \(Int(lastASquareSize))\nrFib: 2\nOffset: x: \(Int(lastASquareXOffset)) \ny: \(Int(lastASquareYOffset))")
+//                        .font(.system(size: 2.5))
+                    
+                    Circle()
+                        .trim(from: 0.45, to: 0.8)
+                        .fill(Color.blue)
+                        .frame(width: lastCircleSize, height: lastCircleSize)
+                    //.border(Color.red, width: 5)
+                        .offset(x: lastCircleXOffset, y: lastCircleYOffset)
+                        .rotationEffect(.degrees(180))
+                    
+                    Circle()
+                        //.trim(from: 0.5, to: 0.75)
+                        .fill(backgroundColor.BrightBlue)
+                        .frame(width: lastCircleSize-10, height: lastCircleSize-10)
+                    //.border(Color.red, width: 5)
+                        .offset(x: lastCircleXOffset, y: lastCircleYOffset)
+                        .rotationEffect(.degrees(180))
+                    
+                    
+                }
+                .offset(x: lastASquareXOffset, y: lastASquareYOffset)
+            } // 1x1 A square
+            
+            ZStack {
+                Group {
+                    Rectangle()
+                        .fill(backgroundColor.BrightBlue)
+                        .border(Color.blue, width: squareBorderSize)
+                        .frame(width: lastBSquareSize, height: lastBSquareSize)
+  
+//                    Text("r: \(Int(lastBSquareSize))\nrFib: 1\nOffset: x: \(Int(lastBSquareXOffset)) \ny: \(Int(lastBSquareYOffset))")
+//                        .font(.system(size: 2.5))
+                    
+                    Circle()
+                        .trim(from: 0.5, to: 0.78)
+                        .fill(Color.blue)
+                        .frame(width: lastCircleSize, height: lastCircleSize)
+                    //.border(Color.red, width: 5)
+                        .offset(x: lastCircleXOffset, y: lastCircleYOffset)
+                        .rotationEffect(.degrees(90))
+                    
+                    Circle()
+                        //.trim(from: 0.5, to: 0.75)
+                        .fill(backgroundColor.BrightBlue)
+                        .frame(width: lastCircleSize-10, height: lastCircleSize-10)
+                    //.border(Color.red, width: 5)
+                        .offset(x: lastCircleXOffset, y: lastCircleYOffset)
+                        .rotationEffect(.degrees(90))
+                    
+                }
+                .offset(x: lastBSquareXOffset, y: lastBSquareYOffset)
+            } // 1x1 B square
+            
+            //Circle().fill(Color.green).frame(width: 120, height: 120)
+            //.position(x:0, y: 0)
+            
+            //Text("13/21: \n \(0.619)")
             
             
         }
-        .frame(width: widthLayout, height: heightLayoutNew)
-        .fixedSize(horizontal: true, vertical: false)
-        //.position(x: 0, y: 0)
-        
-        
+                .frame(width: widthLayout, height: heightLayoutNew)
+                //.fixedSize(horizontal: true, vertical: true)
+                //.position(x: 0, y: 0)
+                //.ignoresSafeArea()
+            //}
         
     }
 }
