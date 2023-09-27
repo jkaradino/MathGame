@@ -16,7 +16,8 @@
 		215791BA2A99FC81002445AC /* CountDownToPlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215791B92A99FC81002445AC /* CountDownToPlay.swift */; };
 		215791BC2A9A0189002445AC /* SingleMatchTimeLim.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215791BB2A9A0189002445AC /* SingleMatchTimeLim.swift */; };
 		215791BE2A9D55C6002445AC /* UserDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215791BD2A9D55C6002445AC /* UserDataView.swift */; };
-		2163B04B2ABF0BD000E7D7FD /* DancingScript.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2163B04D2ABF0BD000E7D7FD /* DancingScript.ttf */; };
+		2163B0502AC0E78200E7D7FD /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2163B04F2AC0E78200E7D7FD /* IntroView.swift */; };
+		2163B0512AC0FC9100E7D7FD /* DancingScript.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2163B04D2ABF0BD000E7D7FD /* DancingScript.ttf */; };
 		217087DC2A59ED000049AC3D /* TimerLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217087DB2A59ED000049AC3D /* TimerLogic.swift */; };
 		217087DE2A59F1710049AC3D /* TimerLogic_Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217087DD2A59F1710049AC3D /* TimerLogic_Base.swift */; };
 		219D882F2A58ED9000B38022 /* xTimerLogic_old.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219D882E2A58ED9000B38022 /* xTimerLogic_old.swift */; };
@@ -50,6 +51,8 @@
 		215791BB2A9A0189002445AC /* SingleMatchTimeLim.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleMatchTimeLim.swift; sourceTree = "<group>"; };
 		215791BD2A9D55C6002445AC /* UserDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataView.swift; sourceTree = "<group>"; };
 		2163B04C2ABF0BD000E7D7FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file; name = Base; path = Base.lproj/DancingScript.ttf; sourceTree = "<group>"; };
+		2163B04F2AC0E78200E7D7FD /* IntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroView.swift; sourceTree = "<group>"; };
+		2163B0522AC0FC9800E7D7FD /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = en.lproj/DancingScript.ttf; sourceTree = "<group>"; };
 		217087DB2A59ED000049AC3D /* TimerLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerLogic.swift; sourceTree = "<group>"; };
 		217087DD2A59F1710049AC3D /* TimerLogic_Base.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerLogic_Base.swift; sourceTree = "<group>"; };
 		219D882E2A58ED9000B38022 /* xTimerLogic_old.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xTimerLogic_old.swift; sourceTree = "<group>"; };
@@ -116,6 +119,7 @@
 				21A7D91E2A560F5000095E68 /* AnswerButton.swift */,
 				21E28A3A2A71C5EC006FD6C0 /* MainMathGame.swift */,
 				210138612AB9B14B002CA5DC /* FinishedGame.swift */,
+				2163B04F2AC0E78200E7D7FD /* IntroView.swift */,
 				213959852A576D7000C62055 /* SingleMatchNoLim.swift */,
 				215791BB2A9A0189002445AC /* SingleMatchTimeLim.swift */,
 				21C2EDD12A6C2DC500762882 /* xSingleGameContent.swift */,
@@ -233,9 +237,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2163B04B2ABF0BD000E7D7FD /* DancingScript.ttf in Resources */,
 				213EE1E62A560C21005F6430 /* Preview Assets.xcassets in Resources */,
 				213EE1E32A560C21005F6430 /* Assets.xcassets in Resources */,
+				2163B0512AC0FC9100E7D7FD /* DancingScript.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,6 +273,7 @@
 				21CAC4FD2A8A42A300FD9322 /* Background_Template.swift in Sources */,
 				21C2EDCA2A6C005E00762882 /* StartContent.swift in Sources */,
 				21A7D91F2A560F5000095E68 /* AnswerButton.swift in Sources */,
+				2163B0502AC0E78200E7D7FD /* IntroView.swift in Sources */,
 				215791BC2A9A0189002445AC /* SingleMatchTimeLim.swift in Sources */,
 				215791BE2A9D55C6002445AC /* UserDataView.swift in Sources */,
 				21F1B6772AADFADF007B94F3 /* TimerNew.swift in Sources */,
@@ -282,6 +287,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				2163B04C2ABF0BD000E7D7FD /* Base */,
+				2163B0522AC0FC9800E7D7FD /* en */,
 			);
 			name = DancingScript.ttf;
 			sourceTree = "<group>";
@@ -413,6 +419,9 @@
 				DEVELOPMENT_ASSET_PATHS = "\"MathGame/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MathGame/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -441,6 +450,9 @@
 				DEVELOPMENT_ASSET_PATHS = "\"MathGame/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MathGame/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

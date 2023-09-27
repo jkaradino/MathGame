@@ -272,7 +272,7 @@ struct MainMathGame_Previews: PreviewProvider {
     static var previews: some View {
         
         ZStack {
-            MainLayout()
+            MainLayoutFibanocciLight()
                 
             VStack {
                 //MentalMathBrand()
