@@ -14,9 +14,9 @@ struct MainMathGame: View {
     @State private var choiceArray: [Int] = [0,1,2,3]
     @State private var firstNumber = 0
     @State private var secondNumber = 0
-    var difficulty = 100
-    var showTimer = true
-    var timeLim: Int = 3
+    var difficulty = 100            // to be setable
+    var showTimer = true            // to be setable
+    var timeLim: Int = 30           // to be setable
     //var holdTimer = false
     
     // add new timer variables to implement timer here
@@ -36,9 +36,14 @@ struct MainMathGame: View {
     
     @EnvironmentObject var outputData: GlobalVariables
     
+    
+    
     var body: some View {
         ZStack {
+            MainLayoutSquares()
+            
             VStack {
+                
                 if timerIsCounting {
                     Button(action: {
                         timerIsCounting.toggle()
@@ -49,6 +54,7 @@ struct MainMathGame: View {
                             Text("STOP GAME")
                                 .foregroundColor(Color.red)
                         }
+                        .opacity(0.8)
                         .padding()
                     })
                 } else {
@@ -58,24 +64,32 @@ struct MainMathGame: View {
                     }
                     .padding()
                 }
+                
                 Group {
-                    VStack {
-                        HStack {
-                            Image(systemName: "function")
-                            Text("=")
-                                .italic()
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 20)
+                            .fill(backgroundColor.GrayBlue)
+                            .frame(width: 380, height: 75)
+                            .shadow(radius: 20)
+                            .opacity(0.85)
+                            .padding()
+
+                        VStack {
+                            HStack {
+                                Image(systemName: "function")
+                                Text("=")
+                                    .italic()
+                            }
+                            Text("\(firstNumber) + \(secondNumber)")
+                                .font(.largeTitle)
+                                .bold()
+                                .foregroundColor(backgroundColor.thirdColor)
                         }
-                        Text("\(firstNumber) + \(secondNumber)")
-                            .font(.largeTitle)
-                            .bold()
-                            .foregroundColor(backgroundColor.thirdColor)
+                        
                     }
+                    
+                    
                 } // 1st Element (GroupBox Task)
-                .frame(width: 340, height: 75)
-                .background(Color(red: 0.71, green: 0.816, blue: 0.961).opacity(0.4).gradient)
-                //.padding()
-                .border(backgroundColor.secondary2Color, width: 6)
-                .padding()
                 
                 Group() {
                     Text("Choose the correct answer!")
@@ -109,31 +123,34 @@ struct MainMathGame: View {
                     
                 } // 2nd Element (Answer Options)
                 
-                ScoreText(scoreValue: score)
-                    .padding()
-                if showTimer {
+                ZStack {
                     VStack {
-                        if timerIsCounting {
-                            TimerText(min: minutes, sec: seconds, msec: mseconds)
-                                .onAppear(perform: {
-                                    self.startTimer()
-                                    outputData.finishedGame = false
-                                })
-                        } else {
-                            //Text("\(minutes):\(seconds):\(mseconds)")
-                            
-                            TimerText(min: minutes, sec: seconds, msec: mseconds)
-                            
-                                .onAppear(perform: {
-                                    self.stopTimer()
-                                    finishedGame = true
-                                    outputData.finishedGame = true
-                                })
+                        ScoreText(scoreValue: score)
+                            .padding()
+                        if showTimer {
+                            VStack {
+                                if timerIsCounting && !(seconds == timeLim) {
+                                    TimerText(min: minutes, sec: seconds, msec: mseconds)
+                                        .onAppear(perform: {
+                                            self.startTimer()
+                                            outputData.finishedGame = false
+                                        })
+                                } else {
+                                    //Text("\(minutes):\(seconds):\(mseconds)")
+                                    
+                                    TimerText(min: minutes, sec: seconds, msec: mseconds)
+                                    
+                                        .onAppear(perform: {
+                                            self.stopTimer()
+                                            finishedGame = true
+                                            outputData.finishedGame = true
+                                        })
+                                }
+                            } // 4th Element (Timer)
                         }
-                    } // 4th Element (Timer)
+                    }
+                    
                 }
-                
-                
             }
             .onAppear(perform: generateAnswers)
             
@@ -143,16 +160,6 @@ struct MainMathGame: View {
         }
         
     }
-    //
-    // test
-//    @State private var hasTimeElapsed = false
-//
-//    private func delayText() {
-//            // Delay of 7.5 seconds
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-//                hasTimeElapsed = true
-//            }
-//        }
     
     func answerIsCorrect(answer: Int) {
         let isCorrect = answer == correctAnswer ? true : false
@@ -202,7 +209,6 @@ struct MainMathGame: View {
             } else {
                 self.mseconds = self.mseconds + 1
             }
-            
         }
     }
     
@@ -218,17 +224,15 @@ struct ScoreText: View {
     
     var body: some View {
         let backgroundColor = MainProperties.BGColors.init()
-        var scoreColor = backgroundColor.thirdColor
+        var scoreColor = backgroundColor.DarkBlue
         
         HStack {
             Text("Score: ")
                 .font(.system(size: 20))
-            //.bold()
-                .foregroundColor(backgroundColor.thirdColor)
+                .foregroundColor(backgroundColor.DarkBlue)
             Text("\(scoreValue)")
                 .font(.system(size: 27))
                 .bold()
-            //.foregroundColor(backgroundColor.thirdColor)
                 .foregroundColor(scoreColor)
             
         } // 3rd Element (Score)
@@ -259,10 +263,10 @@ struct TimerText: View {
                 }
                 .font(.system(size: 20, weight: .bold))
                 .bold()
-                .foregroundColor(backgroundColor.thirdColor)
+                .foregroundColor(backgroundColor.DarkBlue)
                 Text(":")
                 Text("\(msec)")
-                    .foregroundColor(backgroundColor.thirdColor)
+                    .foregroundColor(backgroundColor.DarkBlue)
             }
         }
     }
@@ -272,7 +276,9 @@ struct MainMathGame_Previews: PreviewProvider {
     static var previews: some View {
         
         ZStack {
-            MainLayoutFibanocciLight()
+            //MainLayoutFibanocciLight()
+            MainLayoutSquares()
+                .opacity(1)
                 
             VStack {
                 //MentalMathBrand()

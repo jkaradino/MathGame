@@ -47,9 +47,466 @@ struct MainLayout: View {
     }
 }
 
+struct LinearGradientExample: View {
+    
+    let colors: [Color] = [.purple, .blue, .cyan, .teal]
+    
+    var body: some View {
+        LinearGradient(colors: colors, startPoint: .top, endPoint: .bottom)
+            .ignoresSafeArea()
+    }
+}
 
+struct MainLayoutSquares: View {
+    let backgroundColor = MainProperties.BGColors.init()
+    
+    // Fibanocci size
+    let widthFibanucci: CGFloat = 21
+    let heightFibanucci: CGFloat = 34
+    let factorSquareSize: CGFloat = 10
+    
+    let squareBorderSize: CGFloat = 4
+    let circleBorderSize: CGFloat = 10
+    
+    let scalingFactor = 1
+    
+    var body: some View {
+        
+        let arrayFibanocciNum: [Double] = [1, 13/21, 8/21, 5/21, 3/21, 2/21, 1/21, 1/21]
+        
+        // Squares
+        let widthSquare: CGFloat = widthFibanucci * factorSquareSize
+        let heightSquare: CGFloat = heightFibanucci * factorSquareSize
+        let sizeSquare: CGFloat = widthSquare
 
-struct MainLayoutFibanocciLight: View {
+        
+        // Circles
+        let sizeCircle: CGFloat = widthSquare*2
+
+        
+        let colors: [Color] = [backgroundColor.DarkBlue, .blue, .teal, backgroundColor.MetallicDarkBlue]
+        let squareWidth: CGFloat = 150
+        let squareHeight: CGFloat = 230
+        let firstOffset: CGFloat = 110
+        let rect = RoundedRectangle(cornerRadius: 20)
+            .fill(LinearGradient(colors: colors, startPoint: .top, endPoint: .bottom))
+            .frame(width: squareWidth*2, height: squareHeight*2, alignment: .center)
+            //.frame(width: 100, height: 100, alignment: .center)
+            .opacity(0)
+            //.stroke(Color.purple, lineWidth: 5)
+            .border(LinearGradient(
+                colors: [.teal, .blue, .teal, backgroundColor.MetallicDarkBlue],
+                startPoint: .top, endPoint: .bottom), width: squareBorderSize)
+        
+        
+        
+        ZStack {
+            //backgroundColor.DarkBlue
+                //.ignoresSafeArea()
+            
+            LinearGradient(colors: colors, startPoint: .top, endPoint: .bottom)
+                .ignoresSafeArea()
+            
+            ZStack {
+                
+                ForEach(0..<10) { index in
+                    //@State var scale = 1-(index/10)
+                    
+                    rect
+                        .offset(y: firstOffset + CGFloat(index*20))
+                        .scaleEffect(Double(1))
+                        .opacity(Double(1-(index/10)))
+                    
+                    //Text("\(scale)")
+                }
+                
+                
+
+//                rect
+//                    .offset(y: firstOffset)
+//
+//                rect
+//                    .offset(y: firstOffset+20)
+//                    .scaleEffect(0.9)
+//
+//                rect
+//                    .offset(y: firstOffset+40)
+//                    .scaleEffect(0.8)
+//
+//                rect
+//                    .offset(y: firstOffset+60)
+//                    .scaleEffect(0.7)
+//
+//                rect
+//                    .offset(y: firstOffset + 80)
+//                    .scaleEffect(0.6)
+                
+//                rect
+//                    .offset(y: firstOffset + 100)
+//                    .scaleEffect(0.5)
+//
+//                rect
+//                    .offset(y: firstOffset + 120)
+//                    .scaleEffect(0.4)
+//
+//                rect
+//                    .offset(y: firstOffset + 140)
+//                    .scaleEffect(0.3)
+//
+//                rect
+//                    .offset(y: firstOffset + 160)
+//                    .scaleEffect(0.2)
+                
+//                rect
+//                    .offset(y: firstOffset + 180)
+//                    .scaleEffect(0.1)
+                    
+                
+            }
+            .frame(width: sizeSquare, height: sizeSquare)
+            //.trim(from: 0.5, to: 1)
+            .offset(y: -70)
+            .scaleEffect(1.87)
+        }
+            //.frame(width: widthSquare, height: heightSquare)
+            //.fixedSize(horizontal: true, vertical: true)
+            //.position(x: 0, y: 0)
+            //.ignoresSafeArea()
+            //}
+            //.scaleEffect(1.87)
+        //}
+    }
+}
+
+struct MainLayoutSquares1: View {
+    let backgroundColor = MainProperties.BGColors.init()
+    
+    // Fibanocci size
+    let widthFibanucci: CGFloat = 21
+    let heightFibanucci: CGFloat = 34
+    let factorSquareSize: CGFloat = 10
+    
+    let squareBorderSize: CGFloat = 4
+    let circleBorderSize: CGFloat = 10
+    
+    let scalingFactor = 1
+    
+    var body: some View {
+        
+        let arrayFibanocciNum: [Double] = [1, 13/21, 8/21, 5/21, 3/21, 2/21, 1/21, 1/21]
+        
+        // Squares
+        let widthSquare: CGFloat = widthFibanucci * factorSquareSize
+        let heightSquare: CGFloat = heightFibanucci * factorSquareSize
+        let sizeSquare: CGFloat = widthSquare
+        let firstSquareXOffset: CGFloat = 0
+        let firstSquareYOffset = -heightSquare/2+widthSquare/2
+        
+        // Circles
+        let sizeCircle: CGFloat = widthSquare*2
+        let firstCircleYOffset: CGFloat = sizeCircle/4
+        let firstCircleXOffset: CGFloat = sizeCircle/4
+        
+        
+        let rectangle = Rectangle().fill(RadialGradient(gradient: Gradient(colors: [backgroundColor.White, backgroundColor.BrightBlue]), center: .center, startRadius: 0, endRadius: widthSquare/2))
+            .frame(width: sizeSquare, height: sizeSquare)
+            .opacity(1)
+            .border(backgroundColor.StandardBlue, width: squareBorderSize)
+            
+        
+        let circleSmall = Circle()
+            .trim(from: 0.4, to: 0.75)
+            .fill(RadialGradient(gradient: Gradient(colors: [backgroundColor.White, backgroundColor.BrightBlue]), center: .center, startRadius: widthSquare, endRadius: widthSquare-4))
+            .frame(width: sizeCircle, height: sizeCircle)
+            .offset(x: firstCircleXOffset, y: firstCircleYOffset)
+        
+        let circleBig = Circle()
+            .trim(from: 0.5, to: 0.75)
+            .fill(RadialGradient(gradient: Gradient(colors: [backgroundColor.White, backgroundColor.BrightBlue]), center: .center, startRadius: 0, endRadius: 250))
+            .frame(width: sizeCircle-circleBorderSize, height: sizeCircle-circleBorderSize)
+        //.border(Color.red, width: 5)
+            .offset(x: firstCircleXOffset, y: firstCircleYOffset)
+        
+        //let squareGroup = [rectangle, circleSmall, circleBig] as [Any]
+        
+        let squareGroup = Group {
+            //rectangle
+            circleSmall
+            circleBig
+        }
+        
+        let colors: [Color] = [backgroundColor.DarkBlue, .blue, .teal, backgroundColor.MetallicDarkBlue]
+        let squareWidth: CGFloat = 150
+        let squareHeight: CGFloat = 230
+        let firstOffset: CGFloat = 110
+        let rect = RoundedRectangle(cornerRadius: 20)
+            .fill(LinearGradient(colors: colors, startPoint: .top, endPoint: .bottom))
+            .frame(width: squareWidth*2, height: squareHeight*2, alignment: .center)
+            //.frame(width: 100, height: 100, alignment: .center)
+            .opacity(0)
+            //.stroke(Color.purple, lineWidth: 5)
+            .border(LinearGradient(
+                colors: [.teal, .blue, .teal, backgroundColor.MetallicDarkBlue],
+                startPoint: .top, endPoint: .bottom), width: squareBorderSize)
+        
+        
+        
+        ZStack {
+            //backgroundColor.DarkBlue
+                //.ignoresSafeArea()
+            
+            LinearGradient(colors: colors, startPoint: .top, endPoint: .bottom)
+                .ignoresSafeArea()
+            
+            ZStack {
+
+                rect
+                    
+                    .offset(y: firstOffset)
+                    
+                rect
+                    .offset(y: firstOffset+20)
+                    .scaleEffect(0.9)
+                    
+                
+                
+                rect
+//                    .frame(width: squareWidth*1.6, height: squareHeight*1.6, alignment: .bottom)
+                    .offset(y: firstOffset+40)
+                    .scaleEffect(0.8)
+                    
+                
+                rect
+//                    .frame(width: squareWidth*1.4, height: squareHeight*1.4, alignment: .bottom)
+                    .offset(y: firstOffset+60)
+                    .scaleEffect(0.7)
+                    
+                
+                rect
+//                    .frame(width: squareWidth*1.2, height: squareHeight*1.2, alignment: .bottom)
+                    .offset(y: firstOffset + 80)
+                    .scaleEffect(0.6)
+                    
+                
+                rect
+                    .offset(y: firstOffset + 100)
+                    .scaleEffect(0.5)
+                    
+                
+                rect
+                    .offset(y: firstOffset + 120)
+                    .scaleEffect(0.4)
+                    
+                
+                rect
+                    .offset(y: firstOffset + 140)
+                    .scaleEffect(0.3)
+                
+                rect
+                    .offset(y: firstOffset + 160)
+                    .scaleEffect(0.2)
+                
+                rect
+                    .offset(y: firstOffset + 180)
+                    .scaleEffect(0.1)
+                    
+                
+            }
+            .frame(width: sizeSquare, height: sizeSquare)
+            //.trim(from: 0.5, to: 1)
+            .offset(y: -70)
+            .scaleEffect(1.87)
+        }
+            //.frame(width: widthSquare, height: heightSquare)
+            //.fixedSize(horizontal: true, vertical: true)
+            //.position(x: 0, y: 0)
+            //.ignoresSafeArea()
+            //}
+            //.scaleEffect(1.87)
+        //}
+    }
+}
+
+struct MainLayoutFibanocciLight2: View {
+    let backgroundColor = MainProperties.BGColors.init()
+    
+    // Fibanocci size
+    let widthFibanucci: CGFloat = 21
+    let heightFibanucci: CGFloat = 34
+    let factorSquareSize: CGFloat = 10
+    
+    let squareBorderSize: CGFloat = 5
+    let circleBorderSize: CGFloat = 10
+    
+    let scalingFactor = 1
+    
+    var body: some View {
+//        let sumFibanocciSize: CGFloat = widthFibanocci + heightFibanocci
+        
+//        let widthLayout: CGFloat = widthFibanocci * factorLayoutSize // Breite 210px
+//        let heightLayout: CGFloat = heightFibanocci * factorLayoutSize
+//        let heightLayoutNew: CGFloat = heightLayout
+//        let sumLayoutSize: CGFloat = widthLayout + heightLayout
+        
+        // Squares
+        let widthSquare: CGFloat = widthFibanucci * factorSquareSize
+        let heightSquare: CGFloat = heightFibanucci * factorSquareSize
+        let sizeSquare: CGFloat = widthSquare
+        let firstSquareXOffset: CGFloat = 0
+        let firstSquareYOffset = -heightSquare/2+widthSquare/2
+        
+        // Circles
+        let sizeCircle: CGFloat = widthSquare*2
+        let firstCircleYOffset: CGFloat = sizeCircle/4
+        let firstCircleXOffset: CGFloat = sizeCircle/4
+        
+        let secondSquareSize: CGFloat = 13/21*sizeSquare
+        let secondSquareXOffset: CGFloat = -widthSquare/2 + (13/21*widthSquare)/2
+        let secondSquareYOffset = widthSquare/2 + (13/21*widthSquare)/2
+        
+        //let thirdSquareSize: CGFloat = 8/21*sizeSquare
+        let thirdSquareXOffset: CGFloat = widthSquare/2 - (8/21*widthSquare)/2
+        let thirdSquareYOffset = widthSquare/2 + (13/21*widthSquare) - (8/21*widthSquare)/2
+        
+        //let fourthSquareSize: CGFloat = 8/21*sizeSquare
+        let fourthSquareXOffset: CGFloat = widthSquare/2 - (5/21*widthSquare)/2
+        let fourthSquareYOffset = widthSquare/2 + (5/21*widthSquare)/2
+        
+        //let fifthSquareSize: CGFloat = 8/21*sizeSquare
+        let fifthSquareXOffset: CGFloat = widthSquare/2 - (5/21*widthSquare) - (3/21*widthSquare)/2
+        let fifthSquareYOffset = widthSquare/2 + (3/21*widthSquare)/2
+
+        //let fifthSquareSize: CGFloat = 8/21*sizeSquare
+        let sixthSquareXOffset: CGFloat = widthSquare/2 - (5/21*widthSquare) - (3/21*widthSquare) + (2/21*widthSquare)/2
+        let sixthSquareYOffset = widthSquare/2 + (3/21*widthSquare) + (2/21*widthSquare)/2
+        
+        let seventhSquareXOffset: CGFloat = widthSquare/2 - (5/21*widthSquare) - (1/21*widthSquare)/2
+        let seventhSquareYOffset = widthSquare/2 + (3/21*widthSquare) + (2/21*widthSquare)/2 + (1/21*widthSquare)/2
+        
+        let eightSquareYOffset = widthSquare/2 + (3/21*widthSquare) + (1/21*widthSquare)/2
+        
+        
+        let rectangle = Rectangle().fill(backgroundColor.StandardBlue).frame(width: sizeSquare, height: sizeSquare)
+            .opacity(1)
+            .border(backgroundColor.StandardBlue, width: squareBorderSize)
+        
+        let circleSmall = Circle()
+            .trim(from: 0.4, to: 0.75)
+            //.fill(RadialGradient(gradient: Gradient(colors: [backgroundColor.DarkBlue, backgroundColor.StandardBlue]), center: .center, startRadius: widthSquare, endRadius: widthSquare-4))
+            .fill(Color.blue)
+            .opacity(0.3)
+//            .border(Color.red, 5)
+            //.border(5)
+            .frame(width: sizeCircle, height: sizeCircle)
+            .offset(x: firstCircleXOffset, y: firstCircleYOffset)
+        
+        let circleBig = Circle()
+            .trim(from: 0.5, to: 0.75)
+            //.fill(RadialGradient(gradient: Gradient(colors: [backgroundColor.StandardBlue, backgroundColor.StandardBlue]), center: .center, startRadius: 0, endRadius: 250))
+            .frame(width: sizeCircle-circleBorderSize, height: sizeCircle-circleBorderSize)
+            //.opacity(0.5)
+        //.border(Color.red, width: 5)
+            .offset(x: firstCircleXOffset, y: firstCircleYOffset)
+        
+        //let squareGroup = [rectangle, circleSmall, circleBig] as [Any]
+        
+        let squareGroup = Group {
+            rectangle
+            circleSmall
+            //circleBig
+        }
+        
+        let colors: [Color] = [backgroundColor.DarkBlue, .blue, .teal, backgroundColor.MetallicDarkBlue]
+        
+        ZStack {
+            LinearGradient(colors: colors, startPoint: .top, endPoint: .bottom)
+                .ignoresSafeArea()
+            
+//            RadialGradient(gradient: Gradient(colors: [backgroundColor.DarkBlue, backgroundColor.BrightBlue, backgroundColor.StandardBlue, backgroundColor.StandardBlue, backgroundColor.DarkBlue]), center: .center, startRadius: 0, endRadius: 470)
+//                .ignoresSafeArea()
+            
+            
+            //LinearGradient(colors: [backgroundColor.DarkBlue, backgroundColor.MetallicDarkBlue], startPoint: 0, endPoint: 50)
+            
+            ZStack {
+                backgroundColor.StandardBlue
+                    .frame(width: widthSquare, height: widthSquare)
+                    .border(Color.black, width: 5)
+                    
+                
+                
+                squareGroup
+                Group {
+                    squareGroup
+                        .scaleEffect(13/21)
+                    squareGroup
+                        .scaleEffect(8/21)
+                    squareGroup
+                        .scaleEffect(5/21)
+                    squareGroup
+                        .scaleEffect(3/21)
+                    squareGroup
+                        .scaleEffect(1/21)
+                    squareGroup
+                        .scaleEffect(1/21)
+                }
+                .offset(x: 30, y: 30)
+        
+                
+                squareGroup
+                    .rotationEffect(.degrees(270))
+                    .scaleEffect(13/21)
+                    .offset(x: secondSquareXOffset, y: secondSquareYOffset)
+                
+                squareGroup
+                    .rotationEffect(.degrees(180))
+                    .scaleEffect(8/21)
+                    .offset(x: thirdSquareXOffset, y: thirdSquareYOffset)
+                
+                squareGroup
+                    .rotationEffect(.degrees(90))
+                    .scaleEffect(5/21)
+                    .offset(x: fourthSquareXOffset, y: fourthSquareYOffset)
+                
+                squareGroup
+                    .rotationEffect(.degrees(0))
+                    .scaleEffect(3/21)
+                    .offset(x: fifthSquareXOffset, y: fifthSquareYOffset)
+                
+                squareGroup
+                    .rotationEffect(.degrees(270))
+                    .scaleEffect(2/21)
+                    .offset(x: sixthSquareXOffset, y: sixthSquareYOffset)
+                
+                squareGroup
+                    .rotationEffect(.degrees(180))
+                    .scaleEffect(1/21)
+                    .offset(x: seventhSquareXOffset, y: seventhSquareYOffset)
+                
+                squareGroup
+                    .rotationEffect(.degrees(90))
+                    .scaleEffect(1/21)
+                    .offset(x: seventhSquareXOffset, y: eightSquareYOffset)
+                
+                
+                
+            }
+            .frame(width: sizeSquare, height: sizeSquare)
+            //.trim(from: 0.5, to: 1)
+            .offset(y: -70)
+            .scaleEffect(1.87)
+        }
+            //.frame(width: widthSquare, height: heightSquare)
+            //.fixedSize(horizontal: true, vertical: true)
+            //.position(x: 0, y: 0)
+            //.ignoresSafeArea()
+            //}
+            //.scaleEffect(1.87)
+        //}
+    }
+}
+
+struct MainLayoutFibanocciLight1: View {
     let backgroundColor = MainProperties.BGColors.init()
     
     // Fibanocci size
@@ -1521,6 +1978,7 @@ struct MainColorsOverview: View {
 struct MainLayout_Previews: PreviewProvider {
     static var previews: some View {
         //MainColorsOverview()
-        MainLayoutFibanocciLight()
+        MainLayoutSquares()
+        
     }
 }
