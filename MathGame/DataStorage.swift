@@ -27,6 +27,10 @@ struct DataStorage: View {
                 .font(.title)
                 .autocorrectionDisabled(true)
                 //.onChange(of: text, perform: {self.savedText = text})
+            
+                .onChange(of: text) { _ in
+                            self.savedText = text
+                        }
                 
                 .onAppear {
                     //self.savedText = text

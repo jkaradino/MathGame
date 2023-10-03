@@ -145,23 +145,40 @@ struct GameSettings: View {
                         HStack {
                             
                             if clickedToSave {
-                                
-                            }
-                            
-                            
-                            
-                            else {
                                 Button(action: {
                                     clickedToSave.toggle()
                                 }, label: {
                                     Text("Save")
+                                    
+                                        .onChange(of: testOptions?.option) { _ in
+                                                    self.clickedToSave = false
+                                                }
                                 })
+                                .hidden()
+                                .padding(.horizontal)
+                            }
+                            
+                            if !clickedToSave {
+                                Button(action: {
+                                    clickedToSave.toggle()
+                                }, label: {
+                                    Text("Save")
+                                        
+                                        .onChange(of: testOptions?.option) { _ in
+                                                    self.clickedToSave = false
+                                                }
+                                })
+                                
                                 .padding(.horizontal)
                             }
                             
                             
-                            
+                            Spacer()
                             Text(testOptions?.option ?? "")
+                                .foregroundColor(.gray)
+                                .padding(.horizontal)
+                                .italic()
+                                .opacity(clickedToSave == true ? 1 : 0)
                         }
                         
                         //Spacer()
