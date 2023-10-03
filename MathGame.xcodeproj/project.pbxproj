@@ -20,6 +20,7 @@
 		2163B0512AC0FC9100E7D7FD /* DancingScript.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2163B04D2ABF0BD000E7D7FD /* DancingScript.ttf */; };
 		217087DC2A59ED000049AC3D /* TimerLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217087DB2A59ED000049AC3D /* TimerLogic.swift */; };
 		217087DE2A59F1710049AC3D /* TimerLogic_Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217087DD2A59F1710049AC3D /* TimerLogic_Base.swift */; };
+		2192870B2ACCAD3C00778E63 /* DataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2192870A2ACCAD3C00778E63 /* DataStorage.swift */; };
 		219D882F2A58ED9000B38022 /* xTimerLogic_old.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219D882E2A58ED9000B38022 /* xTimerLogic_old.swift */; };
 		21A7D91F2A560F5000095E68 /* AnswerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A7D91E2A560F5000095E68 /* AnswerButton.swift */; };
 		21C2EDCA2A6C005E00762882 /* StartContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C2EDC92A6C005E00762882 /* StartContent.swift */; };
@@ -55,6 +56,7 @@
 		2163B0522AC0FC9800E7D7FD /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = en.lproj/DancingScript.ttf; sourceTree = "<group>"; };
 		217087DB2A59ED000049AC3D /* TimerLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerLogic.swift; sourceTree = "<group>"; };
 		217087DD2A59F1710049AC3D /* TimerLogic_Base.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerLogic_Base.swift; sourceTree = "<group>"; };
+		2192870A2ACCAD3C00778E63 /* DataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorage.swift; sourceTree = "<group>"; };
 		219D882E2A58ED9000B38022 /* xTimerLogic_old.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xTimerLogic_old.swift; sourceTree = "<group>"; };
 		21A7D91E2A560F5000095E68 /* AnswerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerButton.swift; sourceTree = "<group>"; };
 		21C2EDC92A6C005E00762882 /* StartContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StartContent.swift; path = ../../../../../../../Applications/StartContent.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				213EE1E22A560C21005F6430 /* Assets.xcassets */,
 				213EE1E42A560C21005F6430 /* Preview Content */,
 				21CAC5042A8CCDE400FD9322 /* MainProperties.swift */,
+				21C5EBC32AA5246200E16B11 /* GameSettings.swift */,
 				21F1B67A2AAFB27D007B94F3 /* MentalMathBrand.swift */,
 				21F1B67E2AB12A86007B94F3 /* ColorPattern.swift */,
 				21CBC7E72A8D260800A0953D /* MainLayout.swift */,
@@ -119,6 +122,7 @@
 				21A7D91E2A560F5000095E68 /* AnswerButton.swift */,
 				21E28A3A2A71C5EC006FD6C0 /* MainMathGame.swift */,
 				210138612AB9B14B002CA5DC /* FinishedGame.swift */,
+				2192870A2ACCAD3C00778E63 /* DataStorage.swift */,
 				2163B04F2AC0E78200E7D7FD /* IntroView.swift */,
 				213959852A576D7000C62055 /* SingleMatchNoLim.swift */,
 				215791BB2A9A0189002445AC /* SingleMatchTimeLim.swift */,
@@ -133,7 +137,6 @@
 				217087DB2A59ED000049AC3D /* TimerLogic.swift */,
 				215791BD2A9D55C6002445AC /* UserDataView.swift */,
 				21CAC5002A8C148C00FD9322 /* TestForAlen.swift */,
-				21C5EBC32AA5246200E16B11 /* GameSettings.swift */,
 				21F1B6762AADFADF007B94F3 /* TimerNew.swift */,
 				21F1B6782AAE5A0A007B94F3 /* TimerClass.swift */,
 				21F1B67C2AAFD896007B94F3 /* LoginUIView.swift */,
@@ -269,6 +272,7 @@
 				215791BA2A99FC81002445AC /* CountDownToPlay.swift in Sources */,
 				21CAC5052A8CCDE400FD9322 /* MainProperties.swift in Sources */,
 				219D882F2A58ED9000B38022 /* xTimerLogic_old.swift in Sources */,
+				2192870B2ACCAD3C00778E63 /* DataStorage.swift in Sources */,
 				217087DC2A59ED000049AC3D /* TimerLogic.swift in Sources */,
 				21CAC4FD2A8A42A300FD9322 /* Background_Template.swift in Sources */,
 				21C2EDCA2A6C005E00762882 /* StartContent.swift in Sources */,

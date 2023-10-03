@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct IntroView: View {
+    let backgroundColor = MainProperties.BGColors.init()
+    
     @State private var randomNumbers: [Int] = [0, 1,2,3,4,5,6,7,8,9]
     var emptyFloats: Array<Float> = Array()
     
@@ -17,21 +19,26 @@ struct IntroView: View {
         
         //var emptyDoubles: [Int] = [randomNumbers()]
         
-        VStack {
-            HStack {
-                
+        ZStack {
+            
+            Color(red: 0.12, green: 0.22, blue: 0.3)
+                .ignoresSafeArea()
+            VStack {
+                HStack {
+                    
                     ForEach(0..<10) { index in
                         
                         //Text("\(randomNumbers[index])")
                         Text("\(randomNumbers[index])")
-                            //.frame(width: 200, height: 200)
-                            .font(.custom("Sans Mono", size: 30))
+                        //.frame(width: 200, height: 200)
+                            .font(.custom("American Typewriter", size: 30))
+                            .foregroundColor(Color.green)
                     }
-                //}
+                }
             }
+            .onAppear(perform: {
+                generateRandNum()})
         }
-        .onAppear(perform: {
-            generateRandNum()})
         
     }
     func generateRandNum() {

@@ -16,7 +16,7 @@ struct MainMathGame: View {
     @State private var secondNumber = 0
     var difficulty = 100            // to be setable
     var showTimer = true            // to be setable
-    var timeLim: Int = 30           // to be setable
+    var timeLim: Int = 20           // to be setable
     //var holdTimer = false
     
     // add new timer variables to implement timer here
@@ -41,6 +41,7 @@ struct MainMathGame: View {
     var body: some View {
         ZStack {
             MainLayoutSquares()
+            MainLayoutFibanocciLight3()
             
             VStack {
                 
@@ -144,6 +145,7 @@ struct MainMathGame: View {
                                             self.stopTimer()
                                             finishedGame = true
                                             outputData.finishedGame = true
+                                            //timerIsCounting.toggle()
                                         })
                                 }
                             } // 4th Element (Timer)

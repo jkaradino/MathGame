@@ -327,6 +327,150 @@ struct MainLayoutSquares1: View {
     }
 }
 
+struct MainLayoutFibanocciLight3: View {
+    let backgroundColor = MainProperties.BGColors.init()
+    
+    // Fibanocci size
+    let widthFibanucci: CGFloat = 21
+    let heightFibanucci: CGFloat = 34
+    let factorSquareSize: CGFloat = 10
+    
+    let squareBorderSize: CGFloat = 5
+    let circleBorderSize: CGFloat = 10
+    
+    let scalingFactor = 1
+    
+    var body: some View {
+        
+        // Squares
+        let widthSquare: CGFloat = widthFibanucci * factorSquareSize
+        let heightSquare: CGFloat = heightFibanucci * factorSquareSize
+        let sizeSquare: CGFloat = widthSquare
+        let firstSquareXOffset: CGFloat = 0
+        let firstSquareYOffset = -heightSquare/2+widthSquare/2
+        
+        // Circles
+        let sizeCircle: CGFloat = widthSquare*2
+        let firstCircleYOffset: CGFloat = sizeCircle/4
+        let firstCircleXOffset: CGFloat = sizeCircle/4
+        
+        let secondSquareSize: CGFloat = 13/21*sizeSquare
+        let secondSquareXOffset: CGFloat = -widthSquare/2 + (13/21*widthSquare)/2
+        let secondSquareYOffset = widthSquare/2 + (13/21*widthSquare)/2
+        
+        //let thirdSquareSize: CGFloat = 8/21*sizeSquare
+        let thirdSquareXOffset: CGFloat = widthSquare/2 - (8/21*widthSquare)/2
+        let thirdSquareYOffset = widthSquare/2 + (13/21*widthSquare) - (8/21*widthSquare)/2
+        
+        //let fourthSquareSize: CGFloat = 8/21*sizeSquare
+        let fourthSquareXOffset: CGFloat = widthSquare/2 - (5/21*widthSquare)/2
+        let fourthSquareYOffset = widthSquare/2 + (5/21*widthSquare)/2
+        
+        //let fifthSquareSize: CGFloat = 8/21*sizeSquare
+        let fifthSquareXOffset: CGFloat = widthSquare/2 - (5/21*widthSquare) - (3/21*widthSquare)/2
+        let fifthSquareYOffset = widthSquare/2 + (3/21*widthSquare)/2
+
+        //let fifthSquareSize: CGFloat = 8/21*sizeSquare
+        let sixthSquareXOffset: CGFloat = widthSquare/2 - (5/21*widthSquare) - (3/21*widthSquare) + (2/21*widthSquare)/2
+        let sixthSquareYOffset = widthSquare/2 + (3/21*widthSquare) + (2/21*widthSquare)/2
+        
+        let seventhSquareXOffset: CGFloat = widthSquare/2 - (5/21*widthSquare) - (1/21*widthSquare)/2
+        let seventhSquareYOffset = widthSquare/2 + (3/21*widthSquare) + (2/21*widthSquare)/2 + (1/21*widthSquare)/2
+        
+        let eightSquareYOffset = widthSquare/2 + (3/21*widthSquare) + (1/21*widthSquare)/2
+        
+        let gradient = AngularGradient(
+            gradient: Gradient(colors: [backgroundColor.DarkBlue, backgroundColor.MetallicDarkBlue, backgroundColor.StandardBlue, backgroundColor.BrightBlue, backgroundColor.GrayBlue, backgroundColor.BrightBlue, backgroundColor.StandardBlue, backgroundColor.MetallicDarkBlue, backgroundColor.DarkBlue]),
+            center: .center,
+            startAngle: .degrees(0),
+            endAngle: .degrees(360))
+        
+            
+        
+        let colors: [Color] = [backgroundColor.DarkBlue, .blue, .teal, backgroundColor.MetallicDarkBlue]
+        
+        let circleSmall = Circle()
+            //.fill(backgroundColor.DarkBlue)
+            .stroke(gradient, lineWidth: 5)
+            //.overlay(
+                            //Circle()
+                                //.trim(from: 0, to: CGFloat(0.8))
+                            //.rotation(Angle.degrees(-4))
+                            //.stroke(gradient, style: StrokeStyle(lineWidth: 46, lineCap: .butt))
+            //)
+            .frame(width: sizeCircle, height: sizeCircle)
+        
+            .offset(x: firstCircleXOffset, y: firstCircleYOffset)
+            .shadow(radius: 10)
+            
+        
+        
+        //let squareGroup = [rectangle, circleSmall, circleBig] as [Any]
+        
+        let squareGroup = Group {
+            //rectangle
+            circleSmall
+            //circleBig
+        }
+        
+        let circleOpacity: CGFloat = 0.6
+        
+        ZStack {
+            LinearGradient(colors: colors, startPoint: .top, endPoint: .bottom)
+                .ignoresSafeArea()
+            
+            ZStack {
+                circleSmall
+                    .opacity(circleOpacity)
+                    //.shadow(10)
+                
+                squareGroup
+                    .rotationEffect(.degrees(270))
+                    .scaleEffect(13/21)
+                    .opacity(circleOpacity)
+                    .offset(x: secondSquareXOffset, y: secondSquareYOffset)
+//
+                squareGroup
+                    .rotationEffect(.degrees(180))
+                    .scaleEffect(8/21)
+                    .offset(x: thirdSquareXOffset, y: thirdSquareYOffset)
+//
+                squareGroup
+                    .rotationEffect(.degrees(90))
+                    .scaleEffect(5/21)
+                    .offset(x: fourthSquareXOffset, y: fourthSquareYOffset)
+//
+                squareGroup
+                    .rotationEffect(.degrees(0))
+                    .scaleEffect(3/21)
+                    .offset(x: fifthSquareXOffset, y: fifthSquareYOffset)
+                
+                squareGroup
+                    .rotationEffect(.degrees(270))
+                    .scaleEffect(2/21)
+                    .offset(x: sixthSquareXOffset, y: sixthSquareYOffset)
+//
+                squareGroup
+                    .rotationEffect(.degrees(180))
+                    .scaleEffect(1/21)
+                    .offset(x: seventhSquareXOffset, y: seventhSquareYOffset)
+//
+                squareGroup
+                    .rotationEffect(.degrees(90))
+                    .scaleEffect(1/21)
+                    .offset(x: seventhSquareXOffset, y: eightSquareYOffset)
+                
+                
+                
+            }
+            .frame(width: sizeSquare, height: sizeSquare)
+            //.trim(from: 0.5, to: 1)
+            .offset(y: -70)
+            .scaleEffect(1.87)
+        }
+    }
+}
+
 struct MainLayoutFibanocciLight2: View {
     let backgroundColor = MainProperties.BGColors.init()
     
@@ -1978,7 +2122,7 @@ struct MainColorsOverview: View {
 struct MainLayout_Previews: PreviewProvider {
     static var previews: some View {
         //MainColorsOverview()
-        MainLayoutSquares()
+        MainLayoutFibanocciLight3()
         
     }
 }
