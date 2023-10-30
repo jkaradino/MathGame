@@ -94,6 +94,8 @@ struct MainMathGame: View {
                 
                 Group() {
                     Text("Choose the correct answer!")
+                    
+                    
                     VStack {
                         HStack {
                             //Spacer()
@@ -116,12 +118,8 @@ struct MainMathGame: View {
                                 }
                             }
                         }
-                        //.frame(width: 340, height: 120)
-                        //.background(Color.blue.opacity(0.4))
-                        //.frame(width: 340, height: 120)
                     }
                     .background(backgroundColor.thirdColor.opacity(0.07))
-                    
                 } // 2nd Element (Answer Options)
                 
                 ZStack {
@@ -218,6 +216,17 @@ struct MainMathGame: View {
         timerIsPaused = true
         timer?.invalidate()
         timer = nil
+    }
+}
+
+struct EnterKeypad: View {
+    let backgroundColor = MainProperties.BGColors.init()
+    var body: some View {
+        ZStack {
+            Rectangle()
+                .fill(backgroundColor.DarkBlue)
+            Text("1")
+        }
     }
 }
 

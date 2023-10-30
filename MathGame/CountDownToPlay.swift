@@ -48,7 +48,8 @@ struct CountDownToPlay: View {
             .bold()
         //.background(backgroundColor.secondaryColor)
             .scaleEffect(4)
-            .foregroundColor(backgroundColor.secondaryColor)
+            .foregroundColor(backgroundColor.DarkBlue)
+            //.border(6)
         //.clipShape(Capsule())
             .padding()
         }

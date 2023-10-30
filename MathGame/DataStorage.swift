@@ -47,8 +47,49 @@ struct DataStorage: View {
     }
 }
 
+struct ShowHighlights: View {
+    
+    var tableRow = HStack {
+        Text("1. ")
+            
+        Text("placeholder")
+        
+    }
+        
+    
+    var table: [String] = [
+        "1. _ "
+    ]
+    
+    var body: some View {
+        VStack(alignment: .leading) {
+            HStack(alignment: .top) {
+                Text("Highlights")
+                    .font(.custom("American Typewriter", size: 30))
+                    .padding()
+                Spacer()
+            }
+            .padding()
+            Spacer()
+            
+            GroupBox {
+                Text("Ranking")
+                    
+                List {
+                    tableRow
+                        //.padding(.horizontal)
+                }
+                
+            }
+            .frame(width: 400, height: 700)
+        }
+    }
+    
+}
+
 struct DataStorage_Previews: PreviewProvider {
     static var previews: some View {
+        ShowHighlights()
         DataStorage()
     }
 }

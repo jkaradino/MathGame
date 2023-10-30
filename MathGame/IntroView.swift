@@ -11,6 +11,8 @@ struct IntroView: View {
     let backgroundColor = MainProperties.BGColors.init()
     
     @State private var randomNumbers: [Int] = [0, 1,2,3,4,5,6,7,8,9]
+    //@State private var randomNumbers: [Int] = []
+    
     var emptyFloats: Array<Float> = Array()
     
     let testString: [String] = ["Str1", "Str2"]
@@ -45,7 +47,7 @@ struct IntroView: View {
         randomNumbers = [Int.random(in: 0...9)]
         var answerList = [Int]()
         
-        for _ in 0...20 {
+        for _ in 0...10 {
             answerList.append(Int.random(in: 0...9))
         }
         

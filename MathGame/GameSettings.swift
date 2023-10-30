@@ -13,183 +13,286 @@ struct SettingItems {
 }
 
 struct GameSettings: View {
+    // only once
     @State private var username: String = ""
-    
     @State private var placeholder: String = "Select your difficulty"
-    
     @State private var selectionSaved: Bool = true
-    
+    // ??
     @State private var clickedToSave: Bool = false
+    @State private var clickedToSaveTest: Bool = false
     
+    @State private var testOptionSaved: Bool = false
+    //@State private var testOptionCurrent: Bool = false
+    
+    // for each new
     @State private var difficulty: DropDownMenuOption? = nil
-    
     @State private var timeLimit: DropDownMenuOption? = nil
-    
     @State private var testOptions: DropDownMenuOption? = nil
+    
+    
+    
+    /// Confirmed to save
+    @State private var confirmedName: Bool = false
+    @State private var confirmedDifficulty: Bool = false
+    
+    
+    /// DATA STORAGE
+    @State private var text = "" // unused
+    @AppStorage("NUMBER_KEY") var counter = 0 // unused
+    @AppStorage("STRING_KEY") var savedUsername = ""
+    @AppStorage("STRING_KEY") var savedDifficulty = ""
     
     
     var body: some View {
         var initDifficulty = difficulty
-        var newSelected: Bool? = true
+        
+        
+        var testNewSelected: Bool? = false
+        
+        var testOptionCurrent = testOptions?.option
+        
+        //var testOptionSaved = clickedToSaveTest ? testOptionCurrent : testOptionCurrent
         
         var selectedDifficulty = selectionSaved ? placeholder : "df"
         
         //var changedSelection = selectedDifficulty == initDifficulty ? true : false
         
         //var savedSelection =
+        let backgroundColor = MainProperties.BGColors.init()
         
         
         
-        VStack(alignment: .leading) {
-            Text("Game Settings")
-                .font(.custom("American Typewriter", size: 30))
-                .padding()
+        ZStack {
+            backgroundColor.DarkBlue.opacity(1)
+            VStack(alignment: .leading) {
+                Text("Game Settings")
+                    .font(.custom("American Typewriter", size: 30))
+                    .padding()
                 Spacer()
-            
-            ScrollView {
                 
-                
-                GroupBox {
-                    HStack {
-                        Text("Username")
-                        TextField("text", text: $username)
-                    }
-                }
-                
-                /// Difficulty drop down menu
-                GroupBox {
-                    VStack(alignment: .leading) {
-                        
-                        Text("Difficulty")
-                            .bold()
-                            .padding(.horizontal)
-                        
-                        
-                        // selectedOption == nil ? "Select your difficulty" : "test"
-                        
-                        DropDownMenu(
-                            selectedOption: self.$difficulty,
-                            placeholder: selectionSaved == true ? selectedDifficulty : placeholder,
-                            options: DropDownMenuOption.allValues,
-                            clickedToSave: false)
-                        
-                        HStack {
-                            Button(action: {
-                                selectionSaved.toggle()
-                            }, label: {
-                                Text("Save")
-                            })
-                            .padding(.horizontal)
-                            
-                            Text(difficulty?.option ?? "")
-                        }
-                        
-                        //Spacer()
-                        //.padding(.vertical)
-                    }
+                ScrollView {
                     
-                }
-                
-                /// Time Limit drop down menu
-                GroupBox {
-                    VStack(alignment: .leading) {
-                        
-                        Text("Time Limitation")
-                            .bold()
-                            .padding(.horizontal)
-                        
-                        
-                        // selectedOption == nil ? "Select your difficulty" : "test"
-                        
-                        DropDownMenu(
-                            selectedOption: self.$timeLimit,
-                            placeholder: "Placeholder",
-                            options: DropDownMenuOption.allTimeValues,
-                        clickedToSave: false)
-                        
+                    /// Username
+                    GroupBox {
                         HStack {
-                            Button(action: {
-                                selectionSaved.toggle()
-                            }, label: {
-                                Text("Save")
-                            })
-                            .padding(.horizontal)
+                            Text("Username")
                             
-                            Text(timeLimit?.option ?? "")
-                        }
-                        
-                        //Spacer()
-                        //.padding(.vertical)
-                    }
-                    
-                }
-                
-                /// TEST drop down menu
-                GroupBox {
-                    VStack(alignment: .leading) {
-                        
-                        Text("Test: Status")
-                            .bold()
-                            .padding(.horizontal)
-                        
-                        
-                        // selectedOption == nil ? "Select your difficulty" : "test"
-                        
-                        DropDownMenu(
-                            selectedOption: clickedToSave ? self.$testOptions :  self.$testOptions,
-                            placeholder: "Choose your status",
-                            options: DropDownMenuOption.allTestValues,
-                        clickedToSave: clickedToSave)
-                        
-                        
-                        HStack {
-                            
-                            if clickedToSave {
-                                Button(action: {
-                                    clickedToSave.toggle()
-                                }, label: {
-                                    Text("Save")
-                                    
-                                        .onChange(of: testOptions?.option) { _ in
-                                                    self.clickedToSave = false
-                                                }
-                                })
-                                .hidden()
-                                .padding(.horizontal)
+                            if confirmedName {
+                                Text("\(username)")
+                                    .bold()
+                            } else {
+                                TextField("type your name", text: $username)
+                                    .onChange(of: username) { _ in
+                                        savedUsername = username
+                                    }
+                                    .onAppear {
+                                        self.username = savedUsername
+                                    }
                             }
-                            
-                            if !clickedToSave {
-                                Button(action: {
-                                    clickedToSave.toggle()
-                                }, label: {
-                                    Text("Save")
-                                        
-                                        .onChange(of: testOptions?.option) { _ in
-                                                    self.clickedToSave = false
-                                                }
-                                })
-                                
-                                .padding(.horizontal)
-                            }
-                            
-                            
                             Spacer()
-                            Text(testOptions?.option ?? "")
-                                .foregroundColor(.gray)
+                            Button(action: {
+                                confirmedName.toggle()
+                            }, label: {
+                                if confirmedName {
+                                    Text("Change")
+                                } else {
+                                    Text("Save")
+                                }
+                            })
+                        }
+                    }
+                    .scaledToFit()
+                    
+                    /// Difficulty drop down menu
+                    GroupBox {
+                        VStack(alignment: .leading) {
+                            
+                            Text("Difficulty")
+                                .bold()
                                 .padding(.horizontal)
-                                .italic()
-                                .opacity(clickedToSave == true ? 1 : 0)
+                            
+                            // For each new "difficulty" / "allDifficultyValues" to be changed
+                            
+                            DropDownMenu(
+                                selectedOption: clickedToSave ? self.$difficulty :  self.$difficulty,
+                                placeholder: "Choose your status",
+                                options: DropDownMenuOption.allDifficultyValues,
+                                clickedToSave: clickedToSave)
+                            
+                            HStack {
+                                if clickedToSave {
+                                    Button(action: {
+                                        clickedToSave.toggle()
+                                    }, label: {
+                                        Text("Save")
+                                            .onChange(of: difficulty?.option) { _ in
+                                                self.clickedToSave = false
+                                            }
+                                    })
+                                    .hidden()
+                                    .padding(.horizontal)
+                                }
+                                
+                                if !clickedToSave {
+                                    Button(action: {
+                                        
+                                        
+                                        clickedToSave.toggle()
+                                    }, label: {
+                                        Text("Save")
+                                        
+                                            .onChange(of: difficulty?.option) { _ in
+                                                self.clickedToSave = false
+                                            }
+                                    })
+                                    
+                                    .padding(.horizontal)
+                                }
+                                
+                                
+                                Spacer()
+                                Text(difficulty?.option ?? "")
+                                    .foregroundColor(.gray)
+                                    .padding(.horizontal)
+                                    .italic()
+                                    .opacity(clickedToSave == true ? 1 : 0)
+                            }
+                            
+                            //Spacer()
+                            //.padding(.vertical)
                         }
                         
-                        //Spacer()
-                        //.padding(.vertical)
+                    }
+                    
+                    
+                    /// Time Limit drop down menu
+                    GroupBox {
+                        VStack(alignment: .leading) {
+                            
+                            Text("Time Limitation")
+                                .bold()
+                                .padding(.horizontal)
+                            
+                            // For each new "difficulty" / "allDifficultyValues" to be changed
+                            
+                            DropDownMenu(
+                                selectedOption: clickedToSave ? self.$timeLimit :  self.$timeLimit,
+                                placeholder: "Choose your status",
+                                options: DropDownMenuOption.allTimeValues,
+                                clickedToSave: clickedToSave)
+                            
+                            HStack {
+                                if clickedToSave {
+                                    Button(action: {
+                                        clickedToSave.toggle()
+                                    }, label: {
+                                        Text("Save")
+                                            .onChange(of: timeLimit?.option) { _ in
+                                                self.clickedToSave = false
+                                            }
+                                    })
+                                    .hidden()
+                                    .padding(.horizontal)
+                                }
+                                
+                                if !clickedToSave {
+                                    Button(action: {
+                                        clickedToSave.toggle()
+                                    }, label: {
+                                        Text("Save")
+                                        
+                                            .onChange(of: timeLimit?.option) { _ in
+                                                self.clickedToSave = false
+                                            }
+                                    })
+                                    
+                                    .padding(.horizontal)
+                                }
+                                
+                                
+                                Spacer()
+                                Text(timeLimit?.option ?? "")
+                                    .foregroundColor(.gray)
+                                    .padding(.horizontal)
+                                    .italic()
+                                    .opacity(clickedToSave == true ? 1 : 0)
+                            }
+                            
+                            //Spacer()
+                            //.padding(.vertical)
+                        }
+                        
+                    }
+                    
+                    /// TEST drop down menu
+                    GroupBox {
+                        VStack(alignment: .leading) {
+                            
+                            Text("Test: Status")
+                                .bold()
+                                .padding(.horizontal)
+                            
+                            
+                            // selectedOption == nil ? "Select your difficulty" : "test"
+                            
+                            DropDownMenu(
+                                selectedOption: clickedToSaveTest ? self.$testOptions :  self.$testOptions,
+                                placeholder: "Choose your status",
+                                options: DropDownMenuOption.allTestValues,
+                                clickedToSave: clickedToSaveTest)
+                            
+                            
+                            HStack {
+                                
+                                //if
+                                
+                                if clickedToSaveTest {
+                                    Button(action: {
+                                        //clickedToSaveTest.toggle()
+                                    }, label: {
+                                        Text("Save")
+                                        
+                                            .onChange(of: testOptions?.option) { _ in
+                                                self.clickedToSaveTest = false
+                                            }
+                                    })
+                                    .hidden()
+                                    .padding(.horizontal)
+                                }
+                                
+                                if !clickedToSaveTest {
+                                    Button(action: {
+                                        //clickedToSaveTest.toggle()
+                                    }, label: {
+                                        Text("Save")
+                                        
+                                            .onChange(of: testOptions?.option) { _ in
+                                                self.clickedToSaveTest = false
+                                            }
+                                    })
+                                    
+                                    .padding(.horizontal)
+                                }
+                                
+                                
+                                Spacer()
+                                Text(testOptions?.option ?? "")
+                                    .foregroundColor(.gray)
+                                    .padding(.horizontal)
+                                    .italic()
+                                    .opacity(clickedToSaveTest == true ? 1 : 0)
+                            }
+                            
+                            //Spacer()
+                            //.padding(.vertical)
+                        }
+                        
                     }
                     
                 }
-                
             }
+            
         }
-        
     }
 }
 
@@ -335,6 +438,13 @@ extension DropDownMenuOption {
     
     static let singleValue: DropDownMenuOption = DropDownMenuOption(option: "Noob")
     static let allValues: [DropDownMenuOption] = [
+        DropDownMenuOption(option: "Noob"),
+        DropDownMenuOption(option: "Beginner"),
+        DropDownMenuOption(option: "Smart Guy"),
+        DropDownMenuOption(option: "Professional"),
+        DropDownMenuOption(option: "Expert")]
+    
+    static let allDifficultyValues: [DropDownMenuOption] = [
         DropDownMenuOption(option: "Noob"),
         DropDownMenuOption(option: "Beginner"),
         DropDownMenuOption(option: "Smart Guy"),

@@ -21,6 +21,7 @@ struct SingleMatchTimeLim: View {
     var body: some View {
         var sec = globalVar.Seconds
         VStack {
+            
             MainMathGame(difficulty: 100, showTimer: true)
                 .environmentObject(globalVar)
         }
@@ -52,9 +53,17 @@ struct SingleMatchTimeLimSel: View {
 }
 
 struct SingleMatchTimeLimCaller: View {
+    let backgroundColor = MainProperties.BGColors.init()
+    
     var body: some View {
+        
+        let colors: [Color] = [backgroundColor.DarkBlue, .blue, .teal, backgroundColor.MetallicDarkBlue]
+        
         ZStack {
-            MainLayout()
+            //MainLayout()
+            LinearGradient(colors: colors, startPoint: .top, endPoint: .bottom)
+                .ignoresSafeArea()
+                .opacity(0.9)
             SingleMatchTimeLimSel(globalVar: GlobalVariables())
         }
     }

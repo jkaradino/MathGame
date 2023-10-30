@@ -38,18 +38,22 @@ struct MainGameSettings {
 }
 
 class GlobalVariables: ObservableObject {
-    // from CountDownToPlay()
+    /// from CountDownToPlay()
     @Published var CounterIsZero: Bool = false
     @Published var CountDownText: String = "aaa"
-    // MainMathGame()
+    /// MainMathGame()
     @Published var score: Int = 0
     @Published var firstNumber = 0
     @Published var secondNumber = 0
-    // TimerLogic()
+    /// TimerLogic()
     @Published var Seconds = 0
     @Published var Minutes = 0
     @Published var MSeconds = 0
-    
     @Published var finishedGame = false
-    @Published var finishedGameConfirmed = false
+    //@Published var finishedGameConfirmed = false
+    
+    /// Game Settings
+    @Published var firstTimeLaunch = true
 }
+
+

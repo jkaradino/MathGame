@@ -100,9 +100,9 @@ struct FinishedGame: View {
     var subText: String = "It's a new high score!"
     
     var buttonText: [String] = [
-    "<< Back to start",
-    "Next level >>",
-    "Re-start the same game"
+    "Back to start",
+    "Next level",
+    "Restart game"
     ]
     
     // Dynmic value increasing
@@ -142,14 +142,23 @@ struct FinishedGame: View {
                             StartContent()
                             backToStart.toggle()
                         }, label: {
-                            Text("\(buttonText[0])")
+                            // Back to start
+                            HStack {
+                                Image(systemName: "arrowshape.turn.up.left.2")
+                                Text("\(buttonText[0])")
+                            }
+                            
                         })
                         .offset(x:10)
                         Spacer()
                         Button(action: {
                             
                         }, label: {
-                            Text("\(buttonText[1])")
+                            // Next level
+                            HStack {
+                                Text("\(buttonText[1])")
+                                Image(systemName: "arrowshape.turn.up.left.2").rotationEffect(.degrees(180))
+                            }
                         })
                         .padding()
                         
@@ -169,6 +178,8 @@ struct FinishedGame: View {
                 //.padding()
                 
                 Group {
+                    
+                    
                     Text("\(titleText)")
                         .bold()
                         .padding(0.0001)
@@ -184,8 +195,24 @@ struct FinishedGame: View {
                     Text("New medal achieved!")
                         .offset(y: 100)
                     
+                    Button(action: {
+                        MainMathGame()
+                    }, label: {
+                        // Next level
+                        HStack {
+                            Image(systemName: "arrow.counterclockwise")
+                            Text("\(buttonText[2])") // Restart game
+                            
+                        }
+                    })
+                    .offset(y: 150)
+                    
+                    //Image(systemName: "arrow.counterclockwise")
+                        //.offset(y: 150)
+                    
                 } // Text Group
                 .offset(y: 100)
+                
                 
                 
                 Spacer()
@@ -217,12 +244,27 @@ struct FinishedGame: View {
             }
             
             if backToStart {
-                NavigationLink {
-                    StartContent()
-                        .navigationBarBackButtonHidden()
-                } label: {
-                    Text("Go to Start")
+                
+                ZStack {
+                    RoundedRectangle(cornerRadius: 10)
+                        .frame(width: 300, height: 180)
+                        .foregroundColor(backgroundColor.GrayBlue)
+                        .border(.blue, width: 2).cornerRadius(10)
+                    
+                    VStack {
+                        Text("Do you really want to do it?")
+                            .padding()
+                        NavigationLink {
+                            StartContent()
+                                .navigationBarBackButtonHidden()
+                        } label: {
+                            Text("Go to Start")
+                        }
+                    }
+                    
+                    
                 }
+                
 
             }
             
@@ -266,32 +308,6 @@ struct FinishedGame: View {
     
 }
 
-
-
-//struct TimerText1: View {
-//    var min: Int
-//    var sec: Int
-//    var msec: Int
-//    var body: some View {
-//    let backgroundColor = MainProperties.BGColors.init()
-//
-//        HStack {
-//            Group {
-//                Group {
-//                    Text("\(min)")
-//                    Text(":")
-//                    Text("\(sec)")
-//                }
-//                .font(.system(size: 20, weight: .bold))
-//                .bold()
-//                .foregroundColor(backgroundColor.thirdColor)
-//                Text(":")
-//                Text("\(msec)")
-//                    .foregroundColor(backgroundColor.thirdColor)
-//            }
-//        }
-//    }
-//}
 
 struct FinishedGame_Previews: PreviewProvider {
     static var previews: some View {
