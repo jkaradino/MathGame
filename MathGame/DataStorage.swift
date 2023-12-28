@@ -89,7 +89,7 @@ struct ShowHighlights: View {
 
 struct DataStorage_Previews: PreviewProvider {
     static var previews: some View {
-        ShowHighlights()
+        //ShowHighlights()
         DataStorage()
     }
 }

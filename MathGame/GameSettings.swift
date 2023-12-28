@@ -37,23 +37,23 @@ struct GameSettings: View {
     
     
     /// DATA STORAGE
+    private var RESET_ALL = false
     @State private var text = "" // unused
     @AppStorage("NUMBER_KEY") var counter = 0 // unused
-    @AppStorage("STRING_KEY") var savedUsername = ""
-    @AppStorage("STRING_KEY") var savedDifficulty = ""
-    
+    @AppStorage("USERNAME_KEY") var savedUsername = ""
+    @AppStorage("STRING_KEY_1") var savedDifficulty = ""
+    @AppStorage("STRING_KEY_1") var isSavedDifficulty = false
     
     var body: some View {
         var initDifficulty = difficulty
-        
-        
         var testNewSelected: Bool? = false
-        
         var testOptionCurrent = testOptions?.option
         
         //var testOptionSaved = clickedToSaveTest ? testOptionCurrent : testOptionCurrent
         
         var selectedDifficulty = selectionSaved ? placeholder : "df"
+        
+        var savedDiff = RESET_ALL ? "" : savedDifficulty
         
         //var changedSelection = selectedDifficulty == initDifficulty ? true : false
         
@@ -65,6 +65,9 @@ struct GameSettings: View {
         ZStack {
             backgroundColor.DarkBlue.opacity(1)
             VStack(alignment: .leading) {
+                
+                Text("DEBUG: \(savedDiff)")
+                
                 Text("Game Settings")
                     .font(.custom("American Typewriter", size: 30))
                     .padding()
@@ -114,37 +117,48 @@ struct GameSettings: View {
                             // For each new "difficulty" / "allDifficultyValues" to be changed
                             
                             DropDownMenu(
-                                selectedOption: clickedToSave ? self.$difficulty :  self.$difficulty,
+                                selectedOption: confirmedDifficulty ? self.$difficulty :  self.$difficulty,
                                 placeholder: "Choose your status",
                                 options: DropDownMenuOption.allDifficultyValues,
-                                clickedToSave: clickedToSave)
+                                clickedToSave: confirmedDifficulty)
+                            
+                            
                             
                             HStack {
-                                if clickedToSave {
+                                if confirmedDifficulty {
                                     Button(action: {
-                                        clickedToSave.toggle()
+                                        confirmedDifficulty.toggle()
+                                        isSavedDifficulty = true
                                     }, label: {
                                         Text("Save")
                                             .onChange(of: difficulty?.option) { _ in
-                                                self.clickedToSave = false
+                                                self.confirmedDifficulty = false
                                             }
                                     })
                                     .hidden()
                                     .padding(.horizontal)
                                 }
                                 
-                                if !clickedToSave {
+                                if !confirmedDifficulty {
                                     Button(action: {
-                                        
-                                        
-                                        clickedToSave.toggle()
+                                        confirmedDifficulty.toggle()
                                     }, label: {
                                         Text("Save")
-                                        
                                             .onChange(of: difficulty?.option) { _ in
-                                                self.clickedToSave = false
+                                                self.confirmedDifficulty = false
                                             }
                                     })
+                                    // ON CHANGE
+                                    .onChange(of: difficulty) { _ in
+//                                        if confirmedDifficulty {
+//
+//                                        }
+                                        savedDifficulty = difficulty?.option ?? "test"
+                                        
+                                    }
+//                                    .onAppear {
+//                                        difficulty?.option = savedDifficulty
+//                                    }
                                     
                                     .padding(.horizontal)
                                 }
@@ -155,7 +169,7 @@ struct GameSettings: View {
                                     .foregroundColor(.gray)
                                     .padding(.horizontal)
                                     .italic()
-                                    .opacity(clickedToSave == true ? 1 : 0)
+                                    .opacity(confirmedName == true ? 1 : 0)
                             }
                             
                             //Spacer()
@@ -429,7 +443,7 @@ struct DropDownMenuListRow: View {
 /// Will be used with FaorEach --> confirm to Hashable protocol
 struct DropDownMenuOption: Identifiable, Hashable {
     let id = UUID().uuidString
-    let option: String
+    var option: String
 }
 
 extension DropDownMenuOption {

@@ -547,7 +547,7 @@ struct MentalMathBrandImageGradient: View {
 
 struct BrandCaller: View {
     var body: some View {
-        let NumCase: Int = 5
+        let NumCase: Int = 3
         VStack {
             switch NumCase {
             case 1:
